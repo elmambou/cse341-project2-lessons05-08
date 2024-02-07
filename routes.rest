@@ -1,0 +1,67 @@
+
+
+
+# // LOCALHOST
+### Get all authors
+GET http://localhost:8080/author HTTP/1.1
+
+###
+GET  http://localhost:8080/book HTTP/1.1
+
+
+
+
+// PRODUCTION Deploy
+###
+GET https://library-lesson06.onrender.com/read
+###
+POST https://library-lesson06.onrender.com/read HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Quiet: The Power of Introverts in a World That Can't Stop Talking",
+    "author": "Susan Cain",
+    "copyrightDate": "2013"
+}
+###
+PUT https://library-lesson06.onrender.com/read/63352a1ca9842ab2ee5ab526 HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Thinking with Type",
+    "author": "Ellen Lupton",
+    "copyrightDate": "2010"
+}
+###
+DELETE https://library-lesson06.onrender.com/read/6335241304c4c18ae9284486 HTTP/1.1
+###
+GET https://library-lesson06.onrender.com/listen
+###
+POST https://library-lesson06.onrender.com/listen HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Daring Greatly: How the Courage to Be Vulnerable Transforms the Way We Live, Love, Parent, and Lead",
+    "author": "Brene Brown",
+    "narrator": "Brene Brown",
+    "length": "06:30",
+    "language": "English",
+    "publisher": "Penguin Audio",
+    "released": "06-26-18"
+}
+###
+PUT https://library-lesson06.onrender.com/listen/63420fcdcc40b011c8e63eba HTTP/1.1
+content-type: application/json
+
+{
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "narrator": "Andy Serkis",
+    "length": "10:25",
+    "language": "English",
+    "publisher": "Recorded Books",
+    "released": "09-21-20"
+}
+###
+DELETE https://library-lesson06.onrender.com/listen/63420fcdcc40b011c8e63ec4 HTTP/1.1
+###

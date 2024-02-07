@@ -1,0 +1,122 @@
+{
+    "book": {
+        "name": "F. Scott Fitzgerald",
+        "birthDate": "1896-09-24",
+        "nationality": "American",
+        "biography": "F. Scott Fitzgerald was an American novelist...",
+        "website": "https://www.fscottfitzgeraldsociety.org/",
+        "booksWritten": "Most Popular Books, The Great Gatsby, Tender is the Night, The Beautiful and Damned, This Side of Paradise, The Short Stories of F. Scott Fitzgerald.",
+        "awards": "None"
+  
+    },
+    "book2": {
+        "name": "Harper Lee",
+        "birthDate": "1926-04-28",
+        "nationality": "American",
+        "biography": "Harper Lee was an American novelist...",
+        "website": "https://www.harperlee.com/",
+        "booksWritten": "“To Kill a Mockingbird, Go Set a Watchman.",
+        "awards": "Pulitzer Prize for Fiction"
+  
+    },
+    "book3": {
+        "name": "George Orwell",
+        "birthDate": "1903-06-25",
+        "nationality": "British",
+        "biography": "George Orwell was an English novelist...",
+        "website": "https://www.georgeorwell.org/",
+        "booksWritten": "Burmese Days, A Clergyman's Daughter, Keep the Aspidistra Flying, Coming Up for Air, Animal Farm and Nineteen Eighty-Four.",
+        "awards": "None"
+  
+    },
+    "book4": {
+        "name": "Jane Austen",
+        "birthDate": "1775-12-16",
+        "nationality": "British",
+        "biography": "Jane Austen was an English novelist...",
+        "website": "https://www.janeausten.org/",
+        "booksWritten": "Mansfield Park (1814), Northanger Abbey (1818), Sense and Sensibility (1811), Emma (1815), Persuasion (1818), Pride and Prejudice(1813)",
+        "awards": "None"
+  
+    },
+    "book5": {
+        "name": "J.D. Salinger",
+        "birthDate": "1919-01-01",
+        "nationality": "American",
+        "biography": "J.D. Salinger was an American novelist...",
+        "website": "https://www.jdsalinger.com/",
+        "booksWritten": "The Catcher in the Rye (1951), Nine Stories (1953), Franny and Zooey (1961), Raise High the Roof Beam, Carpenters and Seymour: An Introduction (1963).",
+        "awards": "None"
+  
+    },
+
+    "book6": {
+        "name": "Herman Melville",
+        "birthDate": "1819-08-01",
+        "nationality": "American",
+        "biography": "Herman Melville was an American novelist...",
+        "website": "https://www.hermanmelville.org/",
+        "booksWritten": "Moby Dick, Bartleby the Scrivener, Billy Budd, The Confidence Man, Benito Cereno, The Piazza Tales, Collected Poems, Clarel.",
+        "awards": "None"
+  
+    },
+    "book7": {
+        "name": "J.R.R. Tolkien",
+        "birthDate": "1892-01-03",
+        "nationality": "British",
+        "biography": "J.R.R. Tolkien was an English writer...",
+        "website": "https://www.tolkien.co.uk/",
+        "booksWritten": " Beowulf: The Monsters and the Critics, The Hobbit, The Lord of the Rings, The Silmarillion, Unfinished Tales and The History of Middle-earth, The Fall of Arthur, Beren and Lúthien, The Legend of Sigurd and Gudrún.",
+        "awards": "None"
+    },
+
+    "book8": {
+        "name": "J.K. Rowling",
+        "birthDate": "1965-07-31",
+        "nationality": "British",
+        "biography": "J.K. Rowling is a British author...",
+        "website": "https://www.jkrowling.com/",
+        "booksWritten": "The Cuckoo's Calling (2013), The Silkworm (2014), Career of Evil ( 2015), Lethal White (2018), Troubled Blood (2020),  Harry Potter and the Sorcerer's Stone, Harry Potter and the Chamber of Secrets, Harry Potter.",
+        "awards": "Order of the British Empire"
+  
+    },
+
+    "book9": {
+        "name": "Joseph Heller",
+        "birthDate": "1923-05-01",
+        "nationality": "American",
+        "biography": "Joseph Heller was an American author...",
+        "website": "https://www.josephheller.com/",
+        "booksWritten": " Catch-22 (1961), Closing Time (1994), Something happened (1974), Good as Gold (1979), God Knows (1984), Picture This (1988) ",
+        "awards": "None"
+    },
+    "book10": {
+        "name": "Agatha Christie",
+        "birthDate": "1890-09-15",
+        "nationality": "British",
+        "biography": "Agatha Christie was an English writer...",
+        "website": "https://www.agathachristie.com/",
+        "booksWritten": " And Then There Were None (1939), The Murder of Roger Ackroyd (1926), Murder on the Orient Express (1934), Death on the Nile (1937), Peril at End House (1932), The ABC Murders (1935) ",
+        "awards": "Dame of the British Empire"
+    },
+  
+    "book11": {
+        "name": "Leo Tolstoy",
+        "birthDate": "1828-09-09",
+        "nationality": "Russian",
+        "biography": "Leo Tolstoy was a Russian writer...",
+        "website": "https://www.leotolstoy.org/",
+        "booksWritten": " War and Peace, by Leo Tolstoy, Anna Karenina, The Death of Ivan Ilyich, The Cossacks, Resurrection, A Confession",
+        "awards": "None"
+    },
+    "book12": {
+      "name": "Mark Twain",
+      "birthDate": "1835-11-30",
+      "nationality": "American",
+      "biography": "Mark Twain was an American writer...",
+      "website": "https://www.marktwainhouse.org/",
+      "booksWritten": "Adventures of Huckleberry Finn; The Adventures of Tom Sawyer; The Prince of the pauper; The Innocents Abroad; Personal Recollections",
+      "awards": "None"
+
+    }
+   }
