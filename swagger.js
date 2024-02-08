@@ -5,7 +5,7 @@ const doc = {
     title: 'My API',
     description: 'Bookstore API'
   },
-  host: 'https://cse341-project2-lessons05-08.onrender.com', 
+  host: 'localhost: 8080', 
   schemes: ['https'],      // Add a comma here
 };
 

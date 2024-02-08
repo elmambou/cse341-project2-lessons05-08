@@ -13,10 +13,10 @@ const bookRoutes = require('./routes/book');
 
 
 
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json'); 
+//const swaggerUi = require('swagger-ui-express');
+//const swaggerDocument = require('./swagger.json'); 
 // Serve Swagger UI
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+//app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 
