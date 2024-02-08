@@ -6,7 +6,7 @@ const doc = {
     description: 'Bookstore API'
   },
   host: 'localhost: 8080', 
-  schemes: ['https'],      // Add a comma here
+  schemes: ['http'],      // Add a comma here
 };
 
 const outputFile = './swagger.json';
