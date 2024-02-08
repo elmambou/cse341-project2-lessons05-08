@@ -1,6 +1,6 @@
 module.exports = (mongoose) => {
     const book = mongoose.model(
-      'book',
+      'books',
       mongoose.Schema(
         {
           title: String,

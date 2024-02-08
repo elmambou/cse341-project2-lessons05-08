@@ -1,6 +1,6 @@
 module.exports = (mongoose) => {
     const author = mongoose.model(
-      'author',
+      'authors',
       mongoose.Schema(
         {
           temple_id: Number,
