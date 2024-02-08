@@ -6,7 +6,7 @@ const doc = {
     description: 'Bookstore API'
   },
   host: 'https://cse341-project2-lessons05-08.onrender.com', 
-  schemes: ['http'],      // Add a comma here
+  schemes: ['https'],      // Add a comma here
 };
 
 const outputFile = './swagger.json';
