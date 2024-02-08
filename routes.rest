@@ -13,55 +13,72 @@ GET  http://localhost:8080/book HTTP/1.1
 
 // PRODUCTION Deploy
 ###
-GET https://library-lesson06.onrender.com/read
+GET https://cse341-project2-lessons05-08.onrender.com/book 
+
+
 ###
-POST https://library-lesson06.onrender.com/read HTTP/1.1
+GET https://cse341-project2-lessons05-08.onrender.com/author 
+
+
+
+
+###
+POST https://cse341-project2-lessons05-08.onrender.com/book HTTP/1.1
 content-type: application/json
 
 {
-    "title": "Quiet: The Power of Introverts in a World That Can't Stop Talking",
-    "author": "Susan Cain",
-    "copyrightDate": "2013"
+  "title": "Romeo and Juliet",
+  "author": "William Shakespeare",
+  "genre": "Tragedy",
+  "publicationYear": 1597,
+  "isbn": "9780743477116",
+  "copiesAvailable": 5,
+  "description": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young star-crossed lovers whose deaths ultimately reconcile their feuding families."
 }
+
 ###
-PUT https://library-lesson06.onrender.com/read/63352a1ca9842ab2ee5ab526 HTTP/1.1
+PUT https://cse341-project2-lessons05-08.onrender.com/book/65c4046c19d4a135b743dd04 HTTP/1.1
 content-type: application/json
 
 {
-    "title": "Thinking with Type",
-    "author": "Ellen Lupton",
-    "copyrightDate": "2010"
+ "title": "Hamlet",
+  "author": "William Shakespeare",
+  "genre": "Tragedy",
+  "publicationYear": 1603,
+  "isbn": "9780141012278",
+  "copiesAvailable": 10,
+  "description": "Hamlet, Prince of Denmark, seeks revenge against his uncle, who has murdered Hamlet's father."
 }
+
 ###
-DELETE https://library-lesson06.onrender.com/read/6335241304c4c18ae9284486 HTTP/1.1
+DELETE https://cse341-project2-lessons05-08.onrender.com/book/65c4112b815ee3e6197cf876
+
+
+
+
 ###
-GET https://library-lesson06.onrender.com/listen
+GET https://cse341-project2-lessons05-08.onrender.com/author
 ###
-POST https://library-lesson06.onrender.com/listen HTTP/1.1
+POST https://cse341-project2-lessons05-08.onrender.com/author HTTP/1.1
 content-type: application/json
 
 {
-    "title": "Daring Greatly: How the Courage to Be Vulnerable Transforms the Way We Live, Love, Parent, and Lead",
-    "author": "Brene Brown",
-    "narrator": "Brene Brown",
-    "length": "06:30",
-    "language": "English",
-    "publisher": "Penguin Audio",
-    "released": "06-26-18"
+ "name": "William Shakespeare",
+  "birthDate": "1564-04-23",
+  "nationality": "English",
+  "biography": "William Shakespeare was an English playwright...",
+  "website": "https://www.shakespeare.org.uk/",
+  "booksWritten": ["Hamlet", "Romeo and Juliet", "Macbeth"],
+  "awards": ["None (considered one of the greatest playwrights in English literature)"]
 }
+
 ###
-PUT https://library-lesson06.onrender.com/listen/63420fcdcc40b011c8e63eba HTTP/1.1
+PUT https://cse341-project2-lessons05-08.onrender.com/author/65c3e51613d6a7c025894bd8 HTTP/1.1
 content-type: application/json
 
 {
-    "title": "The Hobbit",
-    "author": "J.R.R. Tolkien",
-    "narrator": "Andy Serkis",
-    "length": "10:25",
-    "language": "English",
-    "publisher": "Recorded Books",
-    "released": "09-21-20"
+"awards": "Not applicable"
 }
+
 ###
-DELETE https://library-lesson06.onrender.com/listen/63420fcdcc40b011c8e63ec4 HTTP/1.1
-###
+DELETE https://cse341-project2-lessons05-08.onrender.com/author/65c3e51613d6a7c025894bd8 HTTP/1.1
