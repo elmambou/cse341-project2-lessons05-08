@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-//const cors = require('cors');
+const cors = require('cors');
 const mongodb = require('./db/connect');
 
 const port = process.env.PORT || 8080;
@@ -11,7 +11,7 @@ const bookRoutes = require('./routes/book');
 
 
 // Enable CORS
-//app.use(cors());
+app.use(cors());
 
 // Parse JSON bodies
 app.use(bodyParser.json())
