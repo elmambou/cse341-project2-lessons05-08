@@ -5,10 +5,10 @@
     "description": "Bookstore API",
     "version": "1.0.0"
   },
-  "host": "localhost: 8080",
+  "host": "https://cse341-project2-lessons05-08.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/api-docs": {
