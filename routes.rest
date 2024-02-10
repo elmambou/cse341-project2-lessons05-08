@@ -1,67 +1,15 @@
+// LOCALHOST
 
-
-
-# // LOCALHOST
-### Get all authors
+### GET ALL AUTHORS
 GET http://localhost:8080/author HTTP/1.1
 
-###
-GET  http://localhost:8080/book HTTP/1.1
+### Get author by id
+GET  http://localhost:8080/author/65c3e43e13d6a7c025894bcd HTTP/1.1
 
 
-
-
-// PRODUCTION Deploy
-###
-GET https://cse341-project2-lessons05-08.onrender.com/book 
-
-
-###
-GET https://cse341-project2-lessons05-08.onrender.com/author 
-
-
-
-
-###
-POST https://cse341-project2-lessons05-08.onrender.com/book HTTP/1.1
+### Instert a new author collection 
+POST http://localhost:8080/author HTTP/1.1
 content-type: application/json
-
-{
-  "title": "Romeo and Juliet",
-  "author": "William Shakespeare",
-  "genre": "Tragedy",
-  "publicationYear": 1597,
-  "isbn": "9780743477116",
-  "copiesAvailable": 5,
-  "description": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young star-crossed lovers whose deaths ultimately reconcile their feuding families."
-}
-
-###
-PUT https://cse341-project2-lessons05-08.onrender.com/book/65c4046c19d4a135b743dd04 HTTP/1.1
-content-type: application/json
-
-{
- "title": "Hamlet",
-  "author": "William Shakespeare",
-  "genre": "Tragedy",
-  "publicationYear": 1603,
-  "isbn": "9780141012278",
-  "copiesAvailable": 10,
-  "description": "Hamlet, Prince of Denmark, seeks revenge against his uncle, who has murdered Hamlet's father."
-}
-
-###
-DELETE https://cse341-project2-lessons05-08.onrender.com/book/65c4112b815ee3e6197cf876
-
-
-
-
-###
-GET https://cse341-project2-lessons05-08.onrender.com/author
-###
-POST https://cse341-project2-lessons05-08.onrender.com/author HTTP/1.1
-content-type: application/json
-
 {
  "name": "William Shakespeare",
   "birthDate": "1564-04-23",
@@ -72,13 +20,138 @@ content-type: application/json
   "awards": ["None (considered one of the greatest playwrights in English literature)"]
 }
 
-###
-PUT https://cse341-project2-lessons05-08.onrender.com/author/65c3e51613d6a7c025894bd8 HTTP/1.1
+### Edit author by id
+PUT http://localhost:8080/author/65c51ec10c0de5a74bf01d3e HTTP/1.1
 content-type: application/json
-
 {
-"awards": "Not applicable"
+    "name": "Elie Mambou",
+    "birthDate": "1970-12-29",
+    "nationality": "South African",
+    "biography": "A New South African Novelist ...",
+    "website": "null",
+    "booksWritten": "Self Publication",
+    "awards": "None"
 }
 
-###
-DELETE https://cse341-project2-lessons05-08.onrender.com/author/65c3e51613d6a7c025894bd8 HTTP/1.1
+### Delete author by id
+DELETE http://localhost:8080/author/65c51ec10c0de5a74bf01d3e HTTP/1.1
+
+
+
+### GET ALL BOOKS
+GET  http://localhost:8080/book HTTP/1.1
+
+### Get book by id
+GET  http://localhost:8080/book/65c3d7fb13d6a7c025894ba5 HTTP/1.1
+
+
+### Insert an new book collection 
+POST http://localhost:8080/book HTTP/1.1
+content-type: application/json
+{
+  "title": "Romeo and Juliet",
+  "author": "William Shakespeare",
+  "genre": "Tragedy",
+  "publicationYear": 1597,
+  "isbn": "9780743477116",
+  "copiesAvailable": 5,
+  "description": "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young star-crossed lovers whose deaths ultimately reconcile their feuding families."
+}
+
+### Edit book by id
+PUT http://localhost:8080/book/65c4112b815ee3e6197cf876 HTTP/1.1
+content-type: application/json
+{
+ "title": "Crucial Conversations: Tools for Talking When Stakes Are High",
+  "author": "Kerry Patterson",
+  "genre": "Communication, Self-Help",
+  "publicationYear": 2002,
+  "isbn": "9780071771320",
+  "copiesAvailable": 10,
+  "description": "Crucial Conversations: Tools for Talking When Stakes Are High is a book by Kerry Patterson that provides practical strategies for handling difficult conversations effectively, especially in high-stakes situations."
+}
+
+### Delete a book by id
+DELETE http://localhost:8080/author/65c4046c19d4a135b743dd04 HTTP/1.1
+
+
+
+
+// RENDER PRODUCTION Deploy
+
+//AUTHOR COLLECTION
+### GET ALL AUTHORS
+GET https://cse341-project2-lessons05-08.onrender.com/author 
+
+### Get author by id
+GET https://cse341-project2-lessons05-08.onrender.com/author/65c3e43e13d6a7c025894bcd
+
+
+### Insert a new author
+POST https://cse341-project2-lessons05-08.onrender.com/author HTTP/1.1
+content-type: application/json
+{
+ "name": "William Shakespeare",
+  "birthDate": "1564-04-23",
+  "nationality": "English",
+  "biography": "William Shakespeare was an English playwright...",
+  "website": "https://www.shakespeare.org.uk/",
+  "booksWritten": ["Hamlet", "Romeo and Juliet", "Macbeth"],
+  "awards": ["None (considered one of the greatest playwrights in English literature)"]
+}
+
+### Edit author information by id
+PUT https://cse341-project2-lessons05-08.onrender.com/author/65c750fc753b531b35a300a3 HTTP/1.1
+content-type: application/json
+{
+  "name": "René Descartes",
+  "birthDate": "1596-03-31",
+  "nationality": "French",
+  "biography": "René Descartes was a French philosopher, mathematician, and scientist...",
+  "website": "None",
+  "booksWritten": [],
+  "awards": "No information found"
+}
+
+### Delete author by collection by id
+DELETE https://cse341-project2-lessons05-08.onrender.com/author/65c750fc753b531b35a300a3 HTTP/1.1
+
+
+
+//BOOKS COLLECTION
+### GETT ALL BOOKS
+GET https://cse341-project2-lessons05-08.onrender.com/book 
+
+### Get book by id
+GET https://cse341-project2-lessons05-08.onrender.com/book/65c3d7fb13d6a7c025894ba5
+
+
+### Insert new book 
+POST https://cse341-project2-lessons05-08.onrender.com/book HTTP/1.1
+content-type: application/json
+{
+  "title": "The 21 Irrefutable Laws of Leadership",
+  "author": "John C. Maxwell",
+  "genre": "Leadership, Personal Development",
+  "publicationYear": 1998,
+  "isbn": "9780785288374",
+  "copiesAvailable": 8,
+  "description": "The 21 Irrefutable Laws of Leadership is a book by John C. Maxwell that offers insights into timeless principles of leadership and personal development, providing practical strategies for individuals and organizations."
+}
+
+### Edit a book
+PUT https://cse341-project2-lessons05-08.onrender.com/book/65c4112b815ee3e6197cf876 HTTP/1.1
+content-type: application/json
+{
+ "title": "Hamlet",
+  "author": "William Shakespeare",
+  "genre": "Tragedy",
+  "publicationYear": 1603,
+  "isbn": "9780141012278",
+  "copiesAvailable": 10,
+  "description": "Hamlet, Prince of Denmark, seeks revenge against his uncle, who has murdered Hamlet's father."
+}
+
+### delete a book from the collection
+DELETE https://cse341-project2-lessons05-08.onrender.com/book/65c4112b815ee3e6197cf876 HTTP/1.1
+
