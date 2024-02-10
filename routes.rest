@@ -7,15 +7,6 @@ GET http://localhost:8080/author HTTP/1.1
 GET  http://localhost:8080/author/65c3e46313d6a7c025894bce HTTP/1.1
 
 
-
-### GET ALL BOOKS
-GET  http://localhost:8080/book HTTP/1.1
-
-### Get book by id
-GET  http://localhost:8080/book/65c3d7fb13d6a7c025894ba5 HTTP/1.1
-
-
-
 ### Insert a new author
 POST https://cse341-project2-lessons05-08.onrender.com/author HTTP/1.1
 Content-Type: application/json
@@ -29,23 +20,31 @@ Content-Type: application/json
         "booksWritten": "Most Popular Books, The Great Gatsby, Tender is the Night, The Beautiful and Damned, This Side of Paradise, The Short Stories of F. Scott Fitzgerald.",
         "awards": "None"
 }
+
 ### Edit author by id
-PUT http://localhost:8080/author/65c778d293da2cc1f76e2754 HTTP/1.1
+PUT http://localhost:8080/author/65c3e4a413d6a7c025894bd2 HTTP/1.1
 content-type: application/json
 
 {
     "name": "Elie Mambou",
-    "birthDate": "1970-12-29",
+    "birthDate": "1970-11-19",
     "nationality": "South African",
-    "biography": "A New South African Novelist ...",
+    "biography": "A story of a step father...",
     "website": "null",
     "booksWritten": "Self Publication",
     "awards": "None"
 }
 
 ### Delete author by id
-DELETE http://localhost:8080/author/65c778d293da2cc1f76e2754 HTTP/1.1
+DELETE http://localhost:8080/author/65c3e4a413d6a7c025894bd2 HTTP/1.1
 
+
+
+### GET ALL BOOKS
+GET  http://localhost:8080/book HTTP/1.1
+
+### Get book by id
+GET  http://localhost:8080/book/65c3d7fb13d6a7c025894ba5 HTTP/1.1
 
 
 ### Insert an new book collection 
@@ -82,6 +81,7 @@ DELETE http://localhost:8080/book/65c4046c19d4a135b743dd04 HTTP/1.1
 
 
 
+
 // RENDER PRODUCTION Deploy
 
 //AUTHOR COLLECTION
@@ -107,7 +107,7 @@ content-type: application/json
 }
 
 ### Edit author information by id
-PUT https://cse341-project2-lessons05-08.onrender.com/author/65c778d293da2cc1f76e2754 HTTP/1.1
+PUT https://cse341-project2-lessons05-08.onrender.com/author/65c79c9dc72a27808499869b HTTP/1.1
 content-type: application/json
 
 {
@@ -121,7 +121,7 @@ content-type: application/json
 }
 
 ### Delete author by collection by id
-DELETE https://cse341-project2-lessons05-08.onrender.com/author/65c778d293da2cc1f76e2754 HTTP/1.1
+DELETE https://cse341-project2-lessons05-08.onrender.com/author/65c79c9dc72a27808499869b HTTP/1.1
 
 
 
