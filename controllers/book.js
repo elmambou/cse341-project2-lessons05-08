@@ -85,7 +85,7 @@ const deleteBook = async (req, res) => {
         const userId = new ObjectId(req.params.id);
         const response = await db.collection('book').deleteOne({ _id: userId });
         if (response.deletedCount > 0) {
-            res.status(204).send();
+            res.status(200).send();
         } else {
             throw new Error('Some error occurred while deleting the book.');
         }

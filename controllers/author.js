@@ -85,7 +85,7 @@ const deleteAuthor = async (req, res) => {
       const userId = new ObjectId(req.params.id);
       const response = await db.collection('author').deleteOne({ _id: userId });
       if (response.deletedCount > 0) {
-        res.status(204).send();
+        res.status(200).send();
       } else {
         throw new Error('Some error occurred while deleting the author.');
       }
