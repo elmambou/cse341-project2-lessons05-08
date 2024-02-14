@@ -12,6 +12,6 @@ router.post('/', validation.saveBook, bookController.createBook);
 
 router.put('/:id', validation.saveBook, bookController.updateBook);
 
-router.delete('/:id', validation.saveBook, bookController.deleteBook);
+router.delete('/:id', bookController.deleteBook);
 
 module.exports = router;

@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "My API",
-    "description": "Contact API",
+    "description": "Bookstore API",
     "version": "1.0.0"
   },
   "host": "localhost:8080",
@@ -351,9 +351,6 @@
           "400": {
             "description": "Bad Request"
           },
-          "412": {
-            "description": "Precondition Failed"
-          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -362,7 +359,7 @@
     }
   },
   "definitions": {
-    "Contact": {
+    "Author": {
       "type": "object",
       "properties": {
         "type": {
@@ -373,8 +370,13 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string",
-              "example": "required|string"
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
             },
             "birthDate": {
               "type": "object",
@@ -436,7 +438,6 @@
           "type": "array",
           "example": [
             "name",
-            "birthDate",
             "nationality",
             "biography",
             "website",

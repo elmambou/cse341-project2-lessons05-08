@@ -3,7 +3,7 @@ const swaggerAutogen = require('swagger-autogen')();
 const doc = {
   info: {
     title: 'My API',
-    description: 'Contact API'
+    description: 'Bookstore API'
   },
   host: 'localhost:8080',
   schemes: ['http'],
@@ -20,10 +20,10 @@ const doc = {
     }
   ],
   definitions: {
-    Contact: {
+    Author: {
       type: 'object',
       properties: {
-        name: 'required|string',
+        name: { type: 'string' },
         birthDate: { type: 'string' },
         nationality: { type: 'string' },
         biography: { type: 'string' },
@@ -31,7 +31,7 @@ const doc = {
         booksWritten: { type: 'string' },
         awards: { type: 'string' }
       },
-      required: ['name', 'birthDate', 'nationality', 'biography', 'website', 'booksWritten', 'awards']
+      required: ['name', 'nationality', 'biography', 'website', 'booksWritten', 'awards']
     },
     Book: {
       type: 'object',
@@ -46,8 +46,141 @@ const doc = {
       },
       required: ['title', 'author', 'genre', 'publicationYear', 'isbn', 'copiesAvailable', 'description']
     }
+  },
+  paths: {
+    '/author/{id}': {
+      put: {
+        tags: ['author'],
+        summary: 'Update an author',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'ID of the author to update',
+            required: true,
+            type: 'string'
+          },
+          {
+            in: 'body',
+            name: 'body',
+            description: 'Updated author object',
+            required: true,
+            schema: {
+              $ref: '#/definitions/Author'
+            }
+          }
+        ],
+        responses: {
+          204: {
+            description: 'Author updated successfully'
+          },
+          400: {
+            description: 'Bad Request'
+          },
+          412: {
+            description: 'Precondition Failed'
+          },
+          500: {
+            description: 'Internal Server Error'
+          }
+        }
+      },
+      delete: {
+        tags: ['author'],
+        summary: 'Delete an author',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'ID of the author to delete',
+            required: true,
+            type: 'string'
+          }
+        ],
+        responses: {
+          200: {
+            description: 'Author deleted successfully'
+          },
+          400: {
+            description: 'Bad Request'
+          },
+          412: {
+            description: 'Precondition Failed'
+          },
+          500: {
+            description: 'Internal Server Error'
+          }
+        }
+      }
+    },
+    '/book/{id}': {
+      put: {
+        tags: ['book'],
+        summary: 'Update a book',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'ID of the book to update',
+            required: true,
+            type: 'string'
+          },
+          {
+            in: 'body',
+            name: 'body',
+            description: 'Updated book object',
+            required: true,
+            schema: {
+              $ref: '#/definitions/Book'
+            }
+          }
+        ],
+        responses: {
+          204: {
+            description: 'Book updated successfully'
+          },
+          400: {
+            description: 'Bad Request'
+          },
+          412: {
+            description: 'Precondition Failed'
+          },
+          500: {
+            description: 'Internal Server Error'
+          }
+        }
+      },
+      delete: {
+        tags: ['book'],
+        summary: 'Delete a book',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'ID of the book to delete',
+            required: true,
+            type: 'string'
+          }
+        ],
+        responses: {
+          200: {
+            description: 'Book deleted successfully'
+          },
+          400: {
+            description: 'Bad Request'
+          },
+          412: {
+            description: 'Precondition Failed'
+          },
+          500: {
+            description: 'Internal Server Error'
+          }
+        }
+      }
+    }
   }
 };
+
 
 const outputFile = './swagger.json';
 const endpointsFiles = ['./routes/index.js'];
