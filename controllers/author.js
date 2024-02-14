@@ -90,7 +90,7 @@ const deleteAuthor = async (req, res) => {
         throw new Error('Some error occurred while deleting the author.');
       }
     } catch (error) {
-        res.status(500).json({ error: error.message || 'Some error occurred while deleting the author.'});
+        res.status(500).json( error.message || 'Some error occurred while deleting the author.');
     }
 };
 
