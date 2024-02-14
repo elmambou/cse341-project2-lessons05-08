@@ -3,7 +3,6 @@ module.exports = (mongoose) => {
       'authors',
       mongoose.Schema(
         {
-          temple_id: Number,
           name: String,
           birthDate: String,
           nationality: String,

@@ -11,11 +11,8 @@ const getAll = async (req, res) => {
     }
 };
 
-
 const getSingle = async (req, res) => {
-    if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid author id to find an author.');
-    }
+
     try {
         const db = mongodb.getDb(); // Get the database object once
         const userId = new ObjectId(req.params.id);
@@ -50,11 +47,12 @@ const createAuthor = async (req, res) => {
 };
 
 const updateAuthor = async (req, res) => {
-    if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid author id to update an author.');
-      }
     try {
         const db = mongodb.getDb(); // Get the database object once
+        if (!ObjectId.isValid(req.params.id)) {
+            res.status(400).json('Must use a valid author id to update an author.');
+            return;
+        }
         const userId = new ObjectId(req.params.id);
         const author = {
             name: req.body.name,
@@ -77,15 +75,16 @@ const updateAuthor = async (req, res) => {
 };
 
 const deleteAuthor = async (req, res) => {
-    if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid author id to delete an author.');
-      }
     try {
         const db = mongodb.getDb(); // Get the database object once
+        if (!ObjectId.isValid(req.params.id)) {
+            res.status(400).json('Must use a valid author id to delete an author.');
+            return;
+        }
         const userId = new ObjectId(req.params.id);
         const response = await db.collection('author').deleteOne({ _id: userId });
         if (response.deletedCount > 0) {
-            res.status(200).send();
+            res.status(204).send();
         } else {
             throw new Error('Some error occurred while deleting the author.');
         }

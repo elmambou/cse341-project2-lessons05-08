@@ -37,6 +37,7 @@ app.listen(port, () => {
     console.log(`Connected to DB and listening on ${port}`);
     console.log(`http://localhost:${port}/author`);
     console.log(`http://localhost:${port}/book`);
+    console.log(`http://localhost:${port}/api-docs`);
         });
     })
     .catch((err) => {
