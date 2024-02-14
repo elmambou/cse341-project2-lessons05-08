@@ -12,6 +12,6 @@ router.post('/', validation.saveAuthor, authorController.createAuthor);
 
 router.put('/:id', validation.saveAuthor, authorController.updateAuthor);
 
-router.delete('/:id', validation.saveAuthor, authorController.deleteAuthor);
+router.delete('/:id', authorController.deleteAuthor);
 
 module.exports = router;
