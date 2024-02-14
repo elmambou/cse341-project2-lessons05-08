@@ -78,21 +78,22 @@ const updateAuthor = async (req, res) => {
 
 const deleteAuthor = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid author id to delete an author.');
+        res.status(400).json('Must use a valid author id to delete a author.');
       }
     try {
-        const db = mongodb.getDb(); // Get the database object once
-        const userId = new ObjectId(req.params.id);
-        const response = await db.collection('author').deleteOne({ _id: userId });
-        if (response.deletedCount > 0) {
-            res.status(204).send();
-        } else {
-            throw new Error('Some error occurred while deleting the author.');
-        }
+      const db = mongodb.getDb(); // Get the database object once
+      const userId = new ObjectId(req.params.id);
+      const response = await db.collection('author').deleteOne({ _id: userId });
+      if (response.deletedCount > 0) {
+        res.status(204).send();
+      } else {
+        throw new Error('Some error occurred while deleting the author.');
+      }
     } catch (error) {
         res.status(500).json({ error: error.message || 'Some error occurred while deleting the author.'});
     }
 };
+
 
 module.exports = {
     getAll,
