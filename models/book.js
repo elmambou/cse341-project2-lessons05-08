@@ -6,9 +6,9 @@ module.exports = (mongoose) => {
           title: String,
           book: String,
           genre: String,
-          publicationYear: Number,
+          publicationYear: String,
           isbn: String,
-          copiesAvailable: Number,
+          copiesAvailable: String,
           description: String,
           
           
