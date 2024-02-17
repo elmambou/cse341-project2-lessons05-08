@@ -32,8 +32,7 @@ const saveBook = (req, res, next) => {
         isbn: 'required|string',
         copiesAvailable: 'required|string',
         description: 'required|string'
-  
-    };
+      };
     validator(req.body, validationRule, {}, (err, status) => {
       if (!status) {
         res.status(412).send({
