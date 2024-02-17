@@ -12,17 +12,17 @@ POST https://cse341-project2-lessons05-08.onrender.com/author HTTP/1.1
 Content-Type: application/json
 
 {
-        "name": "F. Scott Fitzgerald",
-        "birthDate": "1896-09-24",
+        "name": "James Bond",
+        "birthDate": "1943-09-24",
         "nationality": "American",
-        "biography": "F. Scott Fitzgerald was an American novelist...",
+        "biography": " James Bondy was an American novelist...",
         "website": "https://www.fscottfitzgeraldsociety.org/",
         "booksWritten": "Most Popular Books, The Great Gatsby, Tender is the Night, The Beautiful and Damned, This Side of Paradise, The Short Stories of F. Scott Fitzgerald.",
         "awards": "None"
 }
 
 ### Edit author by id
-PUT http://localhost:8080/author/65c3e4a413d6a7c025894bd2 HTTP/1.1
+PUT http://localhost:8080/author/65d061bc38376327f9141152 HTTP/1.1
 content-type: application/json
 
 {
@@ -36,7 +36,7 @@ content-type: application/json
 }
 
 ### Delete author by id
-DELETE http://localhost:8080/author/65c3e4a413d6a7c025894bd2 HTTP/1.1
+DELETE http://localhost:8080/author/65d061bc38376327f9141152 HTTP/1.1
 
 
 
@@ -62,7 +62,7 @@ content-type: application/json
 }
 
 ### Edit book by id
-PUT http://localhost:8080/book/65c4112b815ee3e6197cf876 HTTP/1.1
+PUT http://localhost:8080/book/65c4046c19d4a135b743dd04 HTTP/1.1
 content-type: application/json
 
 {
