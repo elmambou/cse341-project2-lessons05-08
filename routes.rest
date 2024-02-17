@@ -26,8 +26,8 @@ PUT http://localhost:8080/author/65d061bc38376327f9141152 HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Elie Mambou",
-    "birthDate": "1970-11-19",
+    "name": " Mamadou Paul",
+    "birthDate": "1969-11-19",
     "nationality": "South African",
     "biography": "A story of a step father...",
     "website": "null",
