@@ -107,7 +107,7 @@ content-type: application/json
 }
 
 ### Edit author information by id
-PUT https://cse341-project2-lessons05-08.onrender.com/author/65c79c9dc72a27808499869b HTTP/1.1
+PUT https://cse341-project2-lessons05-08.onrender.com/author/65c3e47513d6a7c025894bcf HTTP/1.1
 content-type: application/json
 
 {
@@ -121,7 +121,7 @@ content-type: application/json
 }
 
 ### Delete author by collection by id
-DELETE https://cse341-project2-lessons05-08.onrender.com/author/65c79c9dc72a27808499869b HTTP/1.1
+DELETE https://cse341-project2-lessons05-08.onrender.com/author/65c3e47513d6a7c025894bcf HTTP/1.1
 
 
 
