@@ -29,9 +29,9 @@ const saveBook = (req, res, next) => {
         title: 'required|string',
         book: 'required|string',
         genre: 'required|string',
-        publicationYear: 'date',
+        publicationYear: 'required|string',
         isbn: 'required|string',
-        copiesAvailable: 'required|number',
+        copiesAvailable: 'required|string',
         description: 'required|string'
   
     };
