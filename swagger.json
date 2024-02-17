@@ -510,7 +510,7 @@
               "properties": {
                 "type": {
                   "type": "string",
-                  "example": "number"
+                  "example": "string"
                 }
               }
             },

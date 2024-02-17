@@ -155,9 +155,9 @@ content-type: application/json
  "title": "Hamlet",
   "author": "William Shakespeare",
   "genre": "Tragedy",
-  "publicationYear": 1603,
+  "publicationYear": "1603",
   "isbn": "9780141012278",
-  "copiesAvailable": 10,
+  "copiesAvailable": "10",
   "description": "Hamlet, Prince of Denmark, seeks revenge against his uncle, who has murdered Hamlet's father."
 }
 

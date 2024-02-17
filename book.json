@@ -3,9 +3,9 @@
         "title": "The Great Gatsby",
         "author": "F. Scott Fitzgerald",
         "genre": "Fiction",
-        "publicationYear": 1925,
+        "publicationYear": "1925",
         "isbn": "9780743273565",
-        "copiesAvailable": 5,
+        "copiesAvailable": "5",
         "description": "A story of love, wealth, and the American Dream."
   
     },
@@ -13,9 +13,9 @@
         "title": "To Kill a Mockingbird",
         "author": "Harper Lee",
         "genre": "Fiction",
-        "publicationYear": 1960,
+        "publicationYear": "1960",
         "isbn": "9780061120084",
-        "copiesAvailable": 7,
+        "copiesAvailable": "7",
         "description": "A powerful story of racial injustice and moral growth."
   
     },
@@ -23,9 +23,9 @@
         "title": "1984",
         "author": "George Orwell",
         "genre": "Science Fiction",
-        "publicationYear": 1949,
+        "publicationYear": "1949",
         "isbn": "9780451524935",
-        "copiesAvailable": 3,
+        "copiesAvailable": "3",
         "description": "A dystopian novel depicting a totalitarian regime."
   
     },
@@ -33,9 +33,9 @@
         "title": "Pride and Prejudice",
         "author": "Jane Austen",
         "genre": "Romance",
-        "publicationYear": 1813,
+        "publicationYear": "1813",
         "isbn": "9780141439518",
-        "copiesAvailable": 6,
+        "copiesAvailable": "6",
         "description": "A classic novel exploring love and societal expectations."
   
     },
@@ -43,9 +43,9 @@
         "title": "The Catcher in the Rye",
         "author": "J.D. Salinger",
         "genre": "Fiction",
-        "publicationYear": 1951,
+        "publicationYear": "1951",
         "isbn": "9780316769488",
-        "copiesAvailable": 4,
+        "copiesAvailable": "4",
         "description": "A coming-of-age novel capturing teenage angst."
   
     },
@@ -53,9 +53,9 @@
         "title": "Moby-Dick",
         "author": "Herman Melville",
         "genre": "Adventure",
-        "publicationYear": 1851,
+        "publicationYear": "1851",
         "isbn": "9780142437247",
-        "copiesAvailable": 8,
+        "copiesAvailable": "8",
         "description": "The epic saga of Captain Ahab's quest for revenge."
   
   
@@ -64,9 +64,9 @@
         "title": "The Hobbit",
         "author": "J.R.R. Tolkien",
         "genre": "Fantasy",
-        "publicationYear": 1937,
+        "publicationYear": "1937",
         "isbn": "9780261102217",
-        "copiesAvailable": 9,
+        "copiesAvailable": "9",
         "description": "A tale of Bilbo Baggins' unexpected adventure."
   
   
@@ -75,9 +75,9 @@
         "title": "The Lord of the Rings",
         "author": "J.R.R. Tolkien",
         "genre": "Fantasy",
-        "publicationYear": 1954,
+        "publicationYear": "1954",
         "isbn": "9780618640157",
-        "copiesAvailable": 10,
+        "copiesAvailable": "10",
         "description": "A gripping tale of Frodo's quest to destroy the One Ring."
   
     },
@@ -85,9 +85,9 @@
         "title": "Harry Potter and the Philosopher's Stone",
         "author": "J.K. Rowling",
         "genre": "Fantasy",
-        "publicationYear": 1997,
+        "publicationYear": "1997",
         "isbn": "9780747532743",
-        "copiesAvailable": 11,
+        "copiesAvailable": "11",
         "description": "The magical journey of Harry Potter begins."
   
     },
@@ -95,9 +95,9 @@
         "title": "The Catch-22",
         "author": "Joseph Heller",
         "genre": "Satire",
-        "publicationYear": 1961,
+        "publicationYear": "1961",
         "isbn": "9780684833392",
-        "copiesAvailable": 12,
+        "copiesAvailable": "12",
         "description": "A satirical novel set during World War II."
     }
 

@@ -41,7 +41,7 @@ const doc = {
         genre: { type: 'string' },
         publicationYear: { type: 'string' },
         isbn: { type: 'string' },
-        copiesAvailable: { type: 'number' },
+        copiesAvailable: { type: 'string' },
         description: { type: 'string' }
       },
       required: ['title', 'author', 'genre', 'publicationYear', 'isbn', 'copiesAvailable', 'description']
