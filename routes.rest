@@ -102,7 +102,7 @@ content-type: application/json
   "nationality": "French",
   "biography": "René Descartes was a French philosopher, mathematician, and scientist...",
   "website": "None",
-  "booksWritten": [],
+  "booksWritten": "none so far",
   "awards": "No information found"
 }
 
@@ -144,7 +144,7 @@ content-type: application/json
   "publicationYear": 1998,
   "isbn": "9780785288374",
   "copiesAvailable": 8,
-  "description": "The 21 Irrefutable Laws of Leadership is a book by John C. Maxwell that offers insights into timeless principles of leadership and personal development, providing practical strategies for individuals and organizations."
+  "description": "The 21 Irrefutable Laws of Leadership is a book by John C. Maxwell that offers insights into timeless principles of leadership and personal development.", 
 }
 
 ### Edit a book
