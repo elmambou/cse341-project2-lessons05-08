@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongodb = require('./db/connect');
+//const {requiresAuth} = require('express-openid-connect');
+//const {isAuthenticated} = require('express-openid-connect');
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -23,6 +25,16 @@ app.use(bodyParser.json())
     // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
  next();
    })
+
+   process.on('uncaughtException', (err, origin) => {
+    console.log(
+      process.stderr.fd,
+      `Caught exception: ${err}\n` + `Exception origin: ${origin}`
+    );
+  });
+
+
+
 
 // Routes
 mongodb.initDb()
