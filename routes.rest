@@ -1,7 +1,7 @@
 // LOCALHOST
 
 ### GET ALL AUTHORS
-GET http://localhost:8080/author HTTP/1.1
+GET http://localhost:8080/LOGIN HTTP/1.1
 
 ### Get author by id
 GET  http://localhost:8080/author/65c3e49313d6a7c025894bd1 HTTP/1.1
