@@ -7,15 +7,6 @@ const { auth, requiresAuth } = require('express-openid-connect');
 // const { requiresAuth } = require('express-openid-connect');
 
 
-// Define your configuration for Auth0
-const config = {
-  authRequired: false,
-  auth0Logout: true,
-  secret: 'a long, randomly-generated string stored in env',
-  baseURL: 'http://localhost:8080',
-  clientID: 'wr4Qbq8W1Vfi0ZTogrgXiAstMj2c35aD',
-  issuerBaseURL: 'https://dev-lbodsr1ycluh2vxj.us.auth0.com'
-};
 
 const port = process.env.PORT;
 const app = express();
