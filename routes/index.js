@@ -1,6 +1,3 @@
-
-
-
 // Application endpoints index
 
 const express = require('express');
