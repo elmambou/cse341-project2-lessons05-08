@@ -2,14 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongodb = require('./db/connect');
-const { auth } = require('express-openid-connect');
+const { auth, requiresAuth } = require('express-openid-connect');
 //const {isAuthenticated} = require('express-openid-connect');
-
-
-
-
-const port = process.env.PORT || 8080;
-const app = express();
+// const { requiresAuth } = require('express-openid-connect');
 
 
 // Define your configuration for Auth0
@@ -21,6 +16,9 @@ const config = {
   clientID: 'wr4Qbq8W1Vfi0ZTogrgXiAstMj2c35aD',
   issuerBaseURL: 'https://dev-lbodsr1ycluh2vxj.us.auth0.com'
 };
+
+const port = process.env.PORT;
+const app = express();
 
 
 // Import your routes
@@ -66,6 +64,11 @@ mongodb.initDb()
 
        // Use auth middleware
         app.use(auth(config));
+
+        app.get('/profile', requiresAuth(), (req, res) => {
+          res.send(JSON.stringify(req.oidc.user));
+        });
+        
 
         // req.isAuthenticated is provided from the auth router
         app.get('/', (req, res) => {
