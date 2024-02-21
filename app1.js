@@ -4,6 +4,16 @@ const cors = require('cors');
 const mongodb = require('./db/connect');
 const { auth, requiresAuth } = require('express-openid-connect');
 
+
+//NEW LINES TO APP.JS 3
+const Author = require('./author');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+//
+
+
+
+
 const config = {
   authRequired: false,
   auth0Logout: true,
@@ -46,6 +56,29 @@ mongodb.initDb()
     app.get('/', (req, res) => {
       res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
     });
+
+
+
+    
+    // NEW LINES TO APP.JS 10
+    app.get('/author', requiresAuth(), (req, res) => {
+      console.log(req)
+      Author.find()
+      .then(author => {
+        res.status(200).json(author)
+      }).catch(err => {
+        res.status(500).json({ message: 'An error occurred', error: err })
+      })
+    })
+    
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+    //
+
+
+
+
+
 
     app.listen(port, () => {
       console.log(`Connected to DB and listening on ${port}`);
