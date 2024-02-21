@@ -10,8 +10,8 @@ router.use('/book', require('./book'));
 
 
 //NEW LINES TO ROUTES/INDEX.JS  3
-router.get('/', (req, res) => {
-    res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
-});
+//router.get('/', (req, res) => {
+   // res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+//});
 
 module.exports = router;
