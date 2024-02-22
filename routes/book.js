@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const security = require('../middleware/authorize.js');
 
 const bookController = require('../controllers/book');
 const validation = require('../middleware/validate');
-const {requiresAuth} = require('express-openid-connect');
-const {isAuthenticated} = require('../middleware/authenticate');
 
 
 
@@ -12,10 +11,10 @@ router.get('/', bookController.getAll);
 
 router.get('/:id', bookController.getSingle);
 
-router.post('/', requiresAuth(), isAuthenticated, validation.saveBook, bookController.createBook);
+router.post('/', security.checkLogin, validation.saveBook, bookController.createBook);
 
-router.put('/:id', requiresAuth(), isAuthenticated, validation.saveBook, bookController.updateBook);
+router.put('/:id', security.checkLogin, validation.saveBook, bookController.updateBook);
 
-router.delete('/:id', requiresAuth(), isAuthenticated, bookController.deleteBook);
+router.delete('/:id', security.checkLogin, bookController.deleteBook);
 
 module.exports = router;

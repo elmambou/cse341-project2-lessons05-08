@@ -13,8 +13,22 @@ const config = {
   issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL
 };
 
+
 const port = process.env.PORT;
 const app = express();
+
+
+app.use(auth(config));
+
+app.get('/', (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+});
+
+app.get('/profile', requiresAuth(), (req, res) => {
+  console.log(JSON.stringify(req.oidc.user))
+  res.send(JSON.stringify(req.oidc.user));
+});
+
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -23,6 +37,13 @@ app.use((req, res, next) => {
   next();
 });
 
+const authorRoutes = require('./routes/author');
+const bookRoutes = require('./routes/book');
+app.use('/', require('./routes'));
+app.use('/author', authorRoutes);
+app.use('/book', bookRoutes);
+
+
 process.on('uncaughtException', (err, origin) => {
   console.error(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
 });
@@ -30,22 +51,6 @@ process.on('uncaughtException', (err, origin) => {
 mongodb.initDb()
   .then(() => {
     app.locals.db = mongodb.getDb();
-
-    const authorRoutes = require('./routes/author');
-    const bookRoutes = require('./routes/book');
-    app.use('/', require('./routes'));
-    app.use('/author', authorRoutes);
-    app.use('/book', bookRoutes);
-
-    app.use(auth(config));
-
-    app.get('/profile', requiresAuth(), (req, res) => {
-      res.send(JSON.stringify(req.oidc.user));
-    });
-
-    app.get('/', (req, res) => {
-      res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
-    });
 
     app.listen(port, () => {
       console.log(`Connected to DB and listening on ${port}`);
