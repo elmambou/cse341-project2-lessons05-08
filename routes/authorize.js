@@ -15,7 +15,7 @@ const config = {
 router.use(auth(config));
 
 router.get('/', (req, res) => {
-  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+  res.send(req.oidc.isAuthenticated() ? 'Logged in as Elie Mambou' : 'Logged out');
 });
 
 module.exports = router;
