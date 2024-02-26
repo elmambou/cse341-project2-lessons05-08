@@ -23,7 +23,16 @@ app.get('/author/:id', (req, res) => {
   res.send('author ID: ' + id);
 });
 
+// Example usage of ObjectId
 
+//app.get('/book/:id', (req, res) => {
+  const id = req.params.id;
+  const objectId = new ObjectId(id);
+  // Now you can use objectId to perform operations with MongoDB
+  // For example, querying a document by its ID
+  // Example: db.collection('book').findOne({ _id: objectId });
+  res.send('book ID: ' + id);
+});
 
 //End of ObjectId usage
 
@@ -40,7 +49,7 @@ app.use('/graphql', graphqlHTTP((req) => ({
 
 const { auth, requiresAuth } = require('express-openid-connect');
 const authorRoutes = require('./routes/author');
-//const bookRoutes = require('./routes/book');
+const bookRoutes = require('./routes/book');
 const authorizeRoutes = require('./routes/authorize');
 
 app.use(auth(config));
@@ -64,7 +73,7 @@ app.use((req, res, next) => {
 
 app.use('/', require('./routes'));
 app.use('/author', authorRoutes);
-//app.use('/book', bookRoutes);
+app.use('/book', bookRoutes);
 app.use('/authorize', authorizeRoutes); // Use the authorization routes here
 
 process.on('uncaughtException', (err, origin) => {
