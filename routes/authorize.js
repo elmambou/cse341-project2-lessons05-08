@@ -12,7 +12,6 @@ const config = {
   issuerBaseURL: 'dev-lbodsr1ycluh2vxj.us.auth0.com'
 };
 
-
 router.use(auth(config));
 
 router.get('/', (req, res) => {
