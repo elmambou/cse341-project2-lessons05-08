@@ -7,8 +7,8 @@ const {
 } = require('graphql');
 
 const { ObjectId } = require('mongodb');
-const Author = require('./models/author')(); // Import Author model
-const Book = require('./models/book')(); // Import Book model
+const Author = require('./models/author'); // Import Author model
+const Book = require('./models/book'); // Import Book model
 
 // Define Author type
 const AuthorType = new GraphQLObjectType({

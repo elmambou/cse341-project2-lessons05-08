@@ -1,4 +1,4 @@
-module.exports = (mongoose) => {
+  module.exports = (mongoose) => {
     const author = mongoose.model(
       'authors',
       mongoose.Schema(
