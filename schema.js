@@ -7,8 +7,8 @@ const {
 } = require('graphql');
 
 const { ObjectId } = require('mongodb');
-const Author = require('./models/author');
-const Book = require('./models/book');
+const Author = require('./models/author')(); // Import Author model
+const Book = require('./models/book')(); // Import Book model
 
 // Define Author type
 const AuthorType = new GraphQLObjectType({
@@ -47,8 +47,10 @@ const RootQuery = new GraphQLObjectType({
         // Query to get all authors
         authors: {
             type: new GraphQLList(AuthorType),
-            resolve(parent, args) {
-                return Author.find().exec();
+            resolve(parent, args, context) {
+                // Logic to retrieve all authors from MongoDB
+                //return context.db.collection('author').find().toArray();
+                return Author.find({});
             }
         },
         author: {
@@ -57,13 +59,16 @@ const RootQuery = new GraphQLObjectType({
             id: { type: GraphQLString }
         },
         resolve(parent, args, context) {
-            return Author.findById(args.id).exec();
+                   // Logic to retrieve a single contact by firstName
+                   return context.db.collection('author').findOne({ author: args.Author });
             }
         },
         books: {
             type: new GraphQLList(BookType),
             resolve(parent, args, context) {
-                return Book.find({}).exec();
+                  // Logic to retrieve all authors from MongoDB
+                  //return context.db.collection('book').find().toArray();
+                  return Book.find({});
             }
         },
         book: {
@@ -72,7 +77,8 @@ const RootQuery = new GraphQLObjectType({
                 id: { type: GraphQLString }
             },
             resolve(parent, args, context) {
-                return Book.findById(args.id).exec();
+               // Logic to retrieve a single contact by firstName
+               return context.db.collection('book').findOne({ author: args.Author });
             }
         }
     }
@@ -95,7 +101,7 @@ const Mutation = new GraphQLObjectType({
                 awards: { type: GraphQLString }
             },
             resolve(parent, args) {
-                let author = new Author({
+                const author = new Author({
                     name: args.name,
                     birthDate: args.birthDate,
                     nationality: args.nationality,
@@ -120,7 +126,7 @@ const Mutation = new GraphQLObjectType({
                 description: { type: new GraphQLNonNull(GraphQLString) }
             },
             resolve(parent, args) {
-                let book = new Book({
+                const book = new Book({
                     title: args.title,
                     author: args.author,
                     genre: args.genre,
