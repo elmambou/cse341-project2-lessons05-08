@@ -10,10 +10,8 @@ const { graphqlHTTP } = require('express-graphql'); // Corrected import statemen
 const { ObjectId } = require('mongodb'); //Import ObjectId
 const schema = require('./schema');
 
-
 const port = process.env.PORT;
 const app = express();
-
 
 // Example usage of ObjectId
 app.get('/author/:id', (req, res) => {
@@ -35,9 +33,7 @@ app.get('/book/:id', (req, res) => {
   res.send('book ID: ' + id);
 });
 
-
 //End of ObjectId usage
-
 
 
 //This route will be used as an endpoint to interact with Graphql, 
@@ -48,15 +44,12 @@ app.use('/graphql', graphqlHTTP((req) => ({
   context: { db: app.locals.db }, // Pass the MongoDB connection to the context
 })));
 
-
 //End of GraphQL
-
 
 const { auth, requiresAuth } = require('express-openid-connect');
 const authorRoutes = require('./routes/author');
 const bookRoutes = require('./routes/book');
 const authorizeRoutes = require('./routes/authorize');
-
 
 app.use(auth(config));
 
@@ -75,7 +68,6 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Z-Key');
   next();
 });
-
 
 
 app.use('/', require('./routes'));
