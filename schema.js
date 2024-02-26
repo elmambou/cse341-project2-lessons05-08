@@ -49,8 +49,7 @@ const RootQuery = new GraphQLObjectType({
             type: new GraphQLList(AuthorType),
             resolve(parent, args, context) {
                 // Logic to retrieve all authors from MongoDB
-                //return context.db.collection('author').find().toArray();
-                return Author.find({});
+                return context.db.collection('author').find().toArray();
             }
         },
         author: {
@@ -60,25 +59,7 @@ const RootQuery = new GraphQLObjectType({
         },
         resolve(parent, args, context) {
                    // Logic to retrieve a single contact by firstName
-                   return context.db.collection('author').findOne({ author: args.Author });
-            }
-        },
-        books: {
-            type: new GraphQLList(BookType),
-            resolve(parent, args, context) {
-                  // Logic to retrieve all authors from MongoDB
-                  //return context.db.collection('book').find().toArray();
-                  return Book.find({});
-            }
-        },
-        book: {
-            type: BookType,
-            args: {
-                id: { type: GraphQLString }
-            },
-            resolve(parent, args, context) {
-               // Logic to retrieve a single contact by firstName
-               return context.db.collection('book').findOne({ author: args.Author });
+                   return context.db.collection('author').findOne({ title: args.title });
             }
         }
     }
