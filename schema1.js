@@ -7,6 +7,7 @@ const {
 } = require('graphql');
 
 const { ObjectId } = require('mongodb');
+
 const Author = require('./models/author'); // Import Author model
 const Book = require('./models/book'); // Import Book model
 
@@ -46,21 +47,26 @@ const RootQuery = new GraphQLObjectType({
     fields: {
         // Query to get all authors
         authors: {
-            type: new GraphQLList(AuthorType),
+            type: AuthorType,
+          
             resolve(parent, args, context) {
                 // Logic to retrieve all authors from MongoDB
+
                 return context.db.collection('author').find().toArray();
             }
         },
-        // Query to get an author by ID
+      // Query to get an author by ID
         author: {
-            type: AuthorType,
-            args: {
-                id: { type: GraphQLString }
-            },
-            resolve(parent, args, context) {
-                return context.db.collection('author').findOne({ _id: ObjectId(args.id) });
-            }
+            type: new GraphQLList(AuthorType),
+        args: {
+            id: { type: GraphQLString }
+        },
+        resolve(parent, args, context) {
+                   // Logic to retrieve a single author by id
+          //      
+          return context.db.collection('author').findOne({ _id: ObjectId(args._id) });
+               
+        }
         }
     }
 });
@@ -79,19 +85,11 @@ const Mutation = new GraphQLObjectType({
                 biography: { type: new GraphQLNonNull(GraphQLString) },
                 website: { type: GraphQLString },
                 booksWritten: { type: new GraphQLNonNull(GraphQLString) },
-                awards: { type: GraphQLString }
+                awards: { type: new GraphQLNonNull(GraphQLString) }
             },
-            resolve(parent, args) {
-                const author = new Author({
-                    name: args.name,
-                    birthDate: args.birthDate,
-                    nationality: args.nationality,
-                    biography: args.biography,
-                    website: args.website,
-                    booksWritten: args.booksWritten,
-                    awards: args.awards
-                });
-                return author.save();
+            resolve(parent, args, context) {
+                // Logic to add a new author to the database
+                return context.db.collection('author').insertOne(args).then(result => result.ops[0]);
             }
         },
         // Mutation to add a book
