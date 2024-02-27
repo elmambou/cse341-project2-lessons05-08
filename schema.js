@@ -59,7 +59,7 @@ const RootQuery = new GraphQLObjectType({
         },
         resolve(parent, args, context) {
                    // Logic to retrieve a single contact by firstName
-                   return context.db.collection('author').findOne({ title: args.title });
+                   return context.db.collection('author').findOne({ name: args.name });
             }
         }
     }
