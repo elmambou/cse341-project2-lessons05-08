@@ -58,10 +58,10 @@ const RootQuery = new GraphQLObjectType({
             id: { type: GraphQLString }
         },
         resolve(parent, args, context) {
-                   // Logic to retrieve a single contact by firstName
-          //         return context.db.collection('author').findOne({ name: args.name });
-          return context.db.collection('author').findOne({ name: args.name } );
-        
+                   // Logic to retrieve a single author by id
+          //      
+          return context.db.collection('author').findOne({ _id: ObjectId(args.id) });
+               
         }
         }
     }
