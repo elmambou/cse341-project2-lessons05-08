@@ -1,5 +1,5 @@
 {
-    "book": {
+    "author": {
         "name": "F. Scott Fitzgerald",
         "birthDate": "1896-09-24",
         "nationality": "American",
@@ -9,7 +9,7 @@
         "awards": "None"
   
     },
-    "book2": {
+    "author2": {
         "name": "Harper Lee",
         "birthDate": "1926-04-28",
         "nationality": "American",
@@ -19,7 +19,7 @@
         "awards": "Pulitzer Prize for Fiction"
   
     },
-    "book3": {
+    "author3": {
         "name": "George Orwell",
         "birthDate": "1903-06-25",
         "nationality": "British",
@@ -29,7 +29,7 @@
         "awards": "None"
   
     },
-    "book4": {
+    "author4": {
         "name": "Jane Austen",
         "birthDate": "1775-12-16",
         "nationality": "British",
@@ -39,7 +39,7 @@
         "awards": "None"
   
     },
-    "book5": {
+    "author5": {
         "name": "J.D. Salinger",
         "birthDate": "1919-01-01",
         "nationality": "American",
@@ -50,7 +50,7 @@
   
     },
 
-    "book6": {
+    "author6": {
         "name": "Herman Melville",
         "birthDate": "1819-08-01",
         "nationality": "American",
@@ -60,7 +60,7 @@
         "awards": "None"
   
     },
-    "book7": {
+    "author7": {
         "name": "J.R.R. Tolkien",
         "birthDate": "1892-01-03",
         "nationality": "British",
@@ -70,7 +70,7 @@
         "awards": "None"
     },
 
-    "book8": {
+    "author8": {
         "name": "J.K. Rowling",
         "birthDate": "1965-07-31",
         "nationality": "British",
@@ -81,7 +81,7 @@
   
     },
 
-    "book9": {
+    "author9": {
         "name": "Joseph Heller",
         "birthDate": "1923-05-01",
         "nationality": "American",
@@ -90,7 +90,7 @@
         "booksWritten": " Catch-22 (1961), Closing Time (1994), Something happened (1974), Good as Gold (1979), God Knows (1984), Picture This (1988) ",
         "awards": "None"
     },
-    "book10": {
+    "author10": {
         "name": "Agatha Christie",
         "birthDate": "1890-09-15",
         "nationality": "British",
@@ -100,7 +100,7 @@
         "awards": "Dame of the British Empire"
     },
   
-    "book11": {
+    "author11": {
         "name": "Leo Tolstoy",
         "birthDate": "1828-09-09",
         "nationality": "Russian",
@@ -109,7 +109,7 @@
         "booksWritten": " War and Peace, by Leo Tolstoy, Anna Karenina, The Death of Ivan Ilyich, The Cossacks, Resurrection, A Confession",
         "awards": "None"
     },
-    "book12": {
+    "author12": {
       "name": "Mark Twain",
       "birthDate": "1835-11-30",
       "nationality": "American",
