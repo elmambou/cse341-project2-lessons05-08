@@ -85,19 +85,11 @@ const Mutation = new GraphQLObjectType({
                 biography: { type: new GraphQLNonNull(GraphQLString) },
                 website: { type: GraphQLString },
                 booksWritten: { type: new GraphQLNonNull(GraphQLString) },
-                awards: { type: GraphQLString }
+                awards: { type: new GraphQLNonNull(GraphQLString) }
             },
-            resolve(parent, args) {
-                const author = new Author({
-                    name: args.name,
-                    birthDate: args.birthDate,
-                    nationality: args.nationality,
-                    biography: args.biography,
-                    website: args.website,
-                    booksWritten: args.booksWritten,
-                    awards: args.awards
-                });
-                return author.save();
+            resolve(parent, args, context) {
+                // Logic to add a new author to the database
+                return context.db.collection('author').insertOne(args).then(result => result.ops[0]);
             }
         },
         // Mutation to add a book
