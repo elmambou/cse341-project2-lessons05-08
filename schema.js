@@ -52,7 +52,7 @@ const RootQuery = new GraphQLObjectType({
                 return context.db.collection('author').find().toArray();
             }
         },
-        // Query to get an author by ID
+             // Query to get an author by ID
         author: {
             type: AuthorType,
             args: {
@@ -60,6 +60,16 @@ const RootQuery = new GraphQLObjectType({
             },
             resolve(parent, args, context) {
                 return context.db.collection('author').findOne({ _id: ObjectId(args.id) });
+            }
+        },
+   // Query to get an author by name
+        authorByName: {
+            type: AuthorType,
+            args: {
+            name: { type: GraphQLString }
+            },
+            resolve(parent, args, context) {
+                return context.db.collection('author').findOne({ name: args.name });
             }
         }
     }
