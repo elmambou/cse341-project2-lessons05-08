@@ -7,6 +7,7 @@ const {
 } = require('graphql');
 
 const { ObjectId } = require('mongodb');
+
 const Author = require('./models/author'); // Import Author model
 const Book = require('./models/book'); // Import Book model
 
@@ -46,14 +47,17 @@ const RootQuery = new GraphQLObjectType({
     fields: {
         // Query to get all authors
         authors: {
-            type: new GraphQLList(AuthorType),
+            type: AuthorType,
+          
             resolve(parent, args, context) {
                 // Logic to retrieve all authors from MongoDB
+
                 return context.db.collection('author').find().toArray();
             }
         },
+      // Query to get an author by ID
         author: {
-        type: AuthorType,
+            type: new GraphQLList(AuthorType),
         args: {
             id: { type: GraphQLString }
         },
