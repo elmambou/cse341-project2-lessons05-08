@@ -64,7 +64,7 @@ const RootQuery = new GraphQLObjectType({
         resolve(parent, args, context) {
                    // Logic to retrieve a single author by id
           //      
-          return context.db.collection('author').findOne({ _id: ObjectId(args.id) });
+          return context.db.collection('author').findOne({ _id: ObjectId(args._id) });
                
         }
         }
