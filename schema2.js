@@ -7,7 +7,7 @@ const {
 } = require('graphql');
 
 const { ObjectId } = require('mongodb');
-//const Author = require('./models/author'); // Import Author model
+const Author = require('./models/author'); // Import Author model
 const Book = require('./models/book'); // Import Book model
 
 
@@ -93,10 +93,6 @@ const Mutation = new GraphQLObjectType({
                 awards: { type: GraphQLString }
             },
             resolve(parent, args) {
-                // Import the Author model properly
-                const Author = require('./models/author');
-
-                // Create a new instance of the Author model using Mongoose
                 const author = new Author({
                     name: args.name,
                     birthDate: args.birthDate,
@@ -106,12 +102,9 @@ const Mutation = new GraphQLObjectType({
                     booksWritten: args.booksWritten,
                     awards: args.awards
                 });
-
-                // Save the new author to the database
                 return author.save();
             }
         },
-        
         // Mutation to add a book
         addBook: {
             type: BookType,
