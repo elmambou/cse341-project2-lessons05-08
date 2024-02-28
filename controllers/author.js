@@ -39,7 +39,7 @@ const createAuthor = async (req, res) => {
             booksWritten: req.body.booksWritten,
             awards: req.body.awards
         };
-        const response = await db.collection('author').insertOne(author, { wtimeout: 30000 }); // 30 seconds timeout
+        const response = await db.collection('author').insertOne(author, { wtimeout: 60000 }); // 30 seconds timeout
         if (response.acknowledged) {
             res.status(201).json(response);
         } else {
