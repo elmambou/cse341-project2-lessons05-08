@@ -10,6 +10,7 @@ const { ObjectId } = require('mongodb');
 const Author = require('./models/author'); // Import Author model
 const Book = require('./models/book'); // Import Book model
 
+
 // Define Author type
 const AuthorType = new GraphQLObjectType({
     name: 'Author',
@@ -31,7 +32,7 @@ const BookType = new GraphQLObjectType({
     fields: () => ({
         _id: { type: GraphQLString },
         title: { type: GraphQLString },
-        author: { type: GraphQLString },
+        author: { type: AuthorType }, // Update to AuthorType
         genre: { type: GraphQLString },
         publicationYear: { type: GraphQLString },
         isbn: { type: GraphQLString },
