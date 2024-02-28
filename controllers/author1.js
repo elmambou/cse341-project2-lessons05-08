@@ -39,7 +39,7 @@ const createAuthor = async (req, res) => {
             booksWritten: req.body.booksWritten,
             awards: req.body.awards
         };
-        const response = await db.collection('author').insertOne(author, { wtimeout: 30000 }); // 30 seconds timeout
+        const response = await db.collection('author').insertOne(author);
         if (response.acknowledged) {
             res.status(201).json(response);
         } else {
@@ -49,7 +49,6 @@ const createAuthor = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
-
 
 const updateAuthor = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
