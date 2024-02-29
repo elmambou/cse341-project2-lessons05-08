@@ -54,9 +54,9 @@ const RootQuery = new GraphQLObjectType({
                 return context.db.collection('authors').find().toArray();
             }
         },
+    
         // Query to get an author by ID
-        // Query to get an author by ID
-        authorById: {
+        author: {
             type: AuthorType,
             args: {
                 id: { type: new GraphQLNonNull(GraphQLString) } // Change type to GraphQLString
@@ -97,7 +97,7 @@ const Mutation = new GraphQLObjectType({
             },
             resolve(parent, args, context) {
                 const author = new Author(args);
-                return context.db.collection('author').insertOne(author).then(result => result.ops[0]);
+                return context.db.collection('authors').insertOne(author).then(result => result.ops[0]);
             }
         },
         // Mutation to add a book
