@@ -5,8 +5,8 @@ const doc = {
     title: 'My API',
     description: 'Bookstore API'
   },
-  host: 'localhost:8080',
-  schemes: ['http'],
+  host: 'https://cse341-project2-lessons05-08.onrender.com',
+  schemes: ['https'],
   consumes: ['application/json'],
   produces: ['application/json'],
   tags: [
