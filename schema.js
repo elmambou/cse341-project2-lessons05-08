@@ -32,7 +32,7 @@ const BookType = new GraphQLObjectType({
     fields: () => ({
         _id: { type: GraphQLString },
         title: { type: GraphQLString },
-        author: { type: AuthorType }, // Update to AuthorType
+        author: { type: BookType }, // Update to BookType
         genre: { type: GraphQLString },
         publicationYear: { type: GraphQLString },
         isbn: { type: GraphQLString },
@@ -58,7 +58,7 @@ const RootQuery = new GraphQLObjectType({
         author: {
             type: AuthorType,
             args: {
-                id: { type: new GraphQLNonNull(GraphQLString) } // Change type to GraphQLString
+                id: { type: new GraphQLNonNull(GraphQLString) } 
             },
             resolve(parent, args, context) {
                 return context.db.collection('author').findOne({ _id: new ObjectId(args.id) }); // Use new ObjectId()
@@ -115,8 +115,49 @@ const Mutation = new GraphQLObjectType({
                 const book = new Book(args);
                 return context.db.collection('book').insertOne(book).then(result => result.ops[0]);
             }
+        },
+
+        updateAuthor: {
+            type: AuthorType,
+            args: {
+                _id: { type: new GraphQLNonNull(GraphQLString) },
+                firstName: { type: new GraphQLNonNull(GraphQLString) },
+                lastName: { type: new GraphQLNonNull(GraphQLString) },
+                email: { type: new GraphQLNonNull(GraphQLString) },
+                favoriteColor: { type: new GraphQLNonNull(GraphQLString) },
+                birthday: { type: new GraphQLNonNull(GraphQLString) }
+            },
+            resolve(parent, args, context) {
+                // Your logic to update an existing contact in the database
+                // Use ObjectId for the id field
+                const { db } = context;
+                const { _id, ...updateFields } = args;
+                return db.collection('contacts').updateOne(
+                    { _id: ObjectId(_id) },
+                    { $set: updateFields }
+                ).then(() => {
+                    // Return the updated contact
+                    return db.collection('contacts').findOne({ _id: ObjectId(_id) });
+                }).catch(err => {
+                    throw new Error('Failed to update contact');
+                });
+            }
+        },
+        deleteAuthor: {
+            type: AuthorType,
+            args: {
+                _id: { type: new GraphQLNonNull(GraphQLString) }
+            },
+            resolve(parent, args, context) {
+                // Logic to delete a contact from the database
+                return context.db.collection('contacts').findOneAndDelete({ _id: ObjectId(args._id) })
+                    .then(result => result.value)
+                    .catch(err => {
+                        throw new Error('Failed to delete contact');
+                    });
+            }
         }
-    }
+    }   
 });
 
 module.exports = new GraphQLSchema({
