@@ -107,7 +107,7 @@ const Mutation = new GraphQLObjectType({
                         }
                     })
                     .catch(error => {
-                        throw new Error('Failed to add author');
+                        throw new Error('A new Author has been Added');
                     });
             }
         },
