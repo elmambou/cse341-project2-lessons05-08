@@ -96,7 +96,19 @@ const Mutation = new GraphQLObjectType({
             },
             resolve(parent, args, context) {
                 const author = new Author(args);
-                return context.db.collection('author').insertOne(author).then(result => result.ops[0]);
+                return context.db.collection('author').insertOne(author)
+                    .then(result => {
+                        // Check if the insertion was successful
+                        if (result && result.ops && result.ops.length > 0) {
+                            // Return the inserted author
+                            return result.ops[0];
+                        } else {
+                            throw new Error('Failed to add author');
+                        }
+                    })
+                    .catch(error => {
+                        throw new Error('Failed to add author');
+                    });
             }
         },
         // Mutation to add a book
