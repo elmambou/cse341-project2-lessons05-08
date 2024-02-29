@@ -1,6 +1,6 @@
   module.exports = (mongoose) => {
     const author = mongoose.model(
-      'authors',
+      'author',
       mongoose.Schema(
         {
           name: String,
