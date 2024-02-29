@@ -51,7 +51,7 @@ const RootQuery = new GraphQLObjectType({
             type: new GraphQLList(AuthorType),
             resolve(parent, args, context) {
                 // Logic to retrieve all authors from MongoDB
-                return context.db.collection('authors').find().toArray();
+                return context.db.collection('author').find().toArray();
             }
         },
     
@@ -62,7 +62,7 @@ const RootQuery = new GraphQLObjectType({
                 id: { type: new GraphQLNonNull(GraphQLString) } // Change type to GraphQLString
             },
             resolve(parent, args, context) {
-                return context.db.collection('authors').findOne({ _id: new ObjectId(args.id) }); // Use new ObjectId()
+                return context.db.collection('author').findOne({ _id: new ObjectId(args.id) }); // Use new ObjectId()
             }
         },
 
@@ -73,7 +73,7 @@ const RootQuery = new GraphQLObjectType({
                 name: { type: GraphQLString }
             },
             resolve(parent, args, context) {
-                return context.db.collection('authors').findOne({ name: args.name });
+                return context.db.collection('author').findOne({ name: args.name });
             }
         }
     }
