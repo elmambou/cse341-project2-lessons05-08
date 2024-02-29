@@ -7,7 +7,7 @@ const {
 } = require('graphql');
 
 const { ObjectId } = require('mongodb');
-const Author = require('./models/author'); // Import Author model
+const author = require('./models/author'); // Import Author model
 const Book = require('./models/book'); // Import Book model
 
 
@@ -50,27 +50,27 @@ const RootQuery = new GraphQLObjectType({
             type: new GraphQLList(AuthorType),
             resolve(parent, args, context) {
                 // Logic to retrieve all authors from MongoDB
-                return context.db.collection('authors').find().toArray();
+                return context.db.collection('author').find().toArray();
             }
         },
-        // Query to get an author by ID
+             // Query to get an author by ID
         author: {
             type: AuthorType,
             args: {
                 id: { type: GraphQLString }
             },
             resolve(parent, args, context) {
-                return context.db.collection('authors').findOne({ _id: ObjectId(args.id) });
+                return context.db.collection('author').findOne({ _id: ObjectId(args.id) });
             }
         },
-        // Query to get an author by name
+   // Query to get an author by name
         authorByName: {
             type: AuthorType,
             args: {
-                name: { type: GraphQLString }
+            name: { type: GraphQLString }
             },
             resolve(parent, args, context) {
-                return context.db.collection('authors').findOne({ name: args.name });
+                return context.db.collection('author').findOne({ name: args.name });
             }
         }
     }
@@ -92,11 +92,32 @@ const Mutation = new GraphQLObjectType({
                 booksWritten: { type: new GraphQLNonNull(GraphQLString) },
                 awards: { type: GraphQLString }
             },
-            resolve(parent, args, context) {
-                const author = new Author(args);
-                return context.db.collection('authors').insertOne(author).then(result => result.ops[0]);
+            resolve(parent, args,context) {
+                // Import the Author model properly
+                //const Author = require('./models/author');
+                return context.db.collection('author').insertOne(args).then(result => result.ops[0]);
+                 // Logic to add a new contact to the database
+              
+                 
+
+                // Create a new instance of the Author model using Mongoose
+                const author = new Author({
+                   name: args.name,
+                    birthDate: args.birthDate,
+                    nationality: args.nationality,
+                    biography: args.biography,
+                    website: args.website,
+                    booksWritten: args.booksWritten,
+                    awards: args.awards
+                }
+
+                // Save the new author to the database
+                return author.save();
             }
         },
+    
+
+        
         // Mutation to add a book
         addBook: {
             type: BookType,
@@ -109,9 +130,17 @@ const Mutation = new GraphQLObjectType({
                 copiesAvailable: { type: new GraphQLNonNull(GraphQLString) },
                 description: { type: new GraphQLNonNull(GraphQLString) }
             },
-            resolve(parent, args, context) {
-                const book = new Book(args);
-                return context.db.collection('books').insertOne(book).then(result => result.ops[0]);
+            resolve(parent, args) {
+                const book = new Book({
+                    title: args.title,
+                    author: args.author,
+                    genre: args.genre,
+                    publicationYear: args.publicationYear,
+                    isbn: args.isbn,
+                    copiesAvailable: args.copiesAvailable,
+                    description: args.description
+                });
+                return book.save();
             }
         }
     }
