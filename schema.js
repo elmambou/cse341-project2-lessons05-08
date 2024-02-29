@@ -55,15 +55,17 @@ const RootQuery = new GraphQLObjectType({
             }
         },
         // Query to get an author by ID
+        // Query to get an author by ID
         authorById: {
             type: AuthorType,
             args: {
-                id: { type: new GraphQLNonNull(GraphQLInt) }
+                id: { type: new GraphQLNonNull(GraphQLString) } // Change type to GraphQLString
             },
             resolve(parent, args, context) {
-                return context.db.collection('authors').findOne({ _id: ObjectId(args.id) });
+                return context.db.collection('authors').findOne({ _id: new ObjectId(args.id) }); // Use new ObjectId()
             }
         },
+
         // Query to get an author by name
         authorByName: {
             type: AuthorType,
