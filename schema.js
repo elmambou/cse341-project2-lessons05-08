@@ -97,7 +97,7 @@ const Mutation = new GraphQLObjectType({
             },
             resolve(parent, args, context) {
                 const author = new Author(args);
-                return context.db.collection('authors').insertOne(author).then(result => result.ops[0]);
+                return context.db.collection('author').insertOne(author).then(result => result.ops[0]);
             }
         },
         // Mutation to add a book
@@ -114,7 +114,7 @@ const Mutation = new GraphQLObjectType({
             },
             resolve(parent, args, context) {
                 const book = new Book(args);
-                return context.db.collection('books').insertOne(book).then(result => result.ops[0]);
+                return context.db.collection('book').insertOne(book).then(result => result.ops[0]);
             }
         }
     }
