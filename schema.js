@@ -128,32 +128,32 @@ const Mutation = new GraphQLObjectType({
                 birthday: { type: new GraphQLNonNull(GraphQLString) }
             },
             resolve(parent, args, context) {
-                // Your logic to update an existing contact in the database
+                // Your logic to update an existing author in the database
                 // Use ObjectId for the id field
                 const { db } = context;
                 const { _id, ...updateFields } = args;
-                return db.collection('contacts').updateOne(
+                return db.collection('author').updateOne(
                     { _id: ObjectId(_id) },
                     { $set: updateFields }
                 ).then(() => {
-                    // Return the updated contact
-                    return db.collection('contacts').findOne({ _id: ObjectId(_id) });
+                    // Return the updated author
+                    return db.collection('author').findOne({ _id: ObjectId(_id) });
                 }).catch(err => {
-                    throw new Error('Failed to update contact');
+                    throw new Error('Failed to update author');
                 });
             }
-        },
+        },        
         deleteAuthor: {
             type: AuthorType,
             args: {
                 _id: { type: new GraphQLNonNull(GraphQLString) }
             },
             resolve(parent, args, context) {
-                // Logic to delete a contact from the database
-                return context.db.collection('contacts').findOneAndDelete({ _id: ObjectId(args._id) })
+                // Logic to delete an author from the database
+                return context.db.collection('author').findOneAndDelete({ _id: ObjectId(args._id) })
                     .then(result => result.value)
                     .catch(err => {
-                        throw new Error('Failed to delete contact');
+                        throw new Error('Failed to delete author');
                     });
             }
         }
