@@ -3,7 +3,8 @@ const {
     GraphQLString,
     GraphQLList,
     GraphQLSchema,
-    GraphQLNonNull
+    GraphQLNonNull,
+    GraphQLInt
 } = require('graphql');
 
 const { ObjectId } = require('mongodb');
@@ -15,7 +16,7 @@ const Book = require('./models/book'); // Import Book model
 const AuthorType = new GraphQLObjectType({
     name: 'Author',
     fields: () => ({
-        _id: { type: GraphQLString },
+        _id: { type: GraphQLInt },
         name: { type: GraphQLString },
         birthDate: { type: GraphQLString },
         nationality: { type: GraphQLString },
@@ -30,7 +31,7 @@ const AuthorType = new GraphQLObjectType({
 const BookType = new GraphQLObjectType({
     name: 'Book',
     fields: () => ({
-        _id: { type: GraphQLString },
+        _id: { type: GraphQLInt },
         title: { type: GraphQLString },
         author: { type: AuthorType }, // Update to AuthorType
         genre: { type: GraphQLString },
@@ -54,10 +55,10 @@ const RootQuery = new GraphQLObjectType({
             }
         },
         // Query to get an author by ID
-        author: {
+        authorById: {
             type: AuthorType,
             args: {
-                id: { type: GraphQLString }
+                id: { type: GraphQLInt }
             },
             resolve(parent, args, context) {
                 return context.db.collection('authors').findOne({ _id: ObjectId(args.id) });
@@ -94,7 +95,7 @@ const Mutation = new GraphQLObjectType({
             },
             resolve(parent, args, context) {
                 const author = new Author(args);
-                return context.db.collection('authors').insertOne(author).then(result => result.ops[0]);
+                return context.db.collection('author').insertOne(author).then(result => result.ops[0]);
             }
         },
         // Mutation to add a book
