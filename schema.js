@@ -3,8 +3,7 @@ const {
     GraphQLString,
     GraphQLList,
     GraphQLSchema,
-    GraphQLNonNull,
-    GraphQLInt
+    GraphQLNonNull
 } = require('graphql');
 
 const { ObjectId } = require('mongodb');
@@ -16,7 +15,7 @@ const Book = require('./models/book'); // Import Book model
 const AuthorType = new GraphQLObjectType({
     name: 'Author',
     fields: () => ({
-        _id: { type: GraphQLInt },
+        _id: { type: GraphQLString },
         name: { type: GraphQLString },
         birthDate: { type: GraphQLString },
         nationality: { type: GraphQLString },
@@ -31,7 +30,7 @@ const AuthorType = new GraphQLObjectType({
 const BookType = new GraphQLObjectType({
     name: 'Book',
     fields: () => ({
-        _id: { type: GraphQLInt },
+        _id: { type: GraphQLString },
         title: { type: GraphQLString },
         author: { type: AuthorType }, // Update to AuthorType
         genre: { type: GraphQLString },
