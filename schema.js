@@ -162,7 +162,7 @@ const Mutation = new GraphQLObjectType({
             },
             resolve(parent, args, context) {
                 // Logic to delete an author from the database
-                return context.db.collection('author').findOneAndDelete({ _id: ObjectId(args._id) })
+                return context.db.collection('author').findOneAndDelete({ _id: new ObjectId(args._id) })
                     .then(result => result.value)
                     .catch(err => {
                         throw new Error('Failed to delete author');
