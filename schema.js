@@ -101,7 +101,7 @@ const RootQuery = new GraphQLObjectType({
         bookByTitle: {
             type: BookType,
             args: {
-                name: { type: GraphQLString }
+               title: { type: GraphQLString }
             },
             resolve(parent, args, context) {
                 return context.db.collection('book').findOne({ title: args.title });
