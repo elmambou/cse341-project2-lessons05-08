@@ -133,11 +133,13 @@ const Mutation = new GraphQLObjectType({
             type: AuthorType,
             args: {
                 _id: { type: new GraphQLNonNull(GraphQLString) },
-                firstName: { type: new GraphQLNonNull(GraphQLString) },
-                lastName: { type: new GraphQLNonNull(GraphQLString) },
-                email: { type: new GraphQLNonNull(GraphQLString) },
-                favoriteColor: { type: new GraphQLNonNull(GraphQLString) },
-                birthday: { type: new GraphQLNonNull(GraphQLString) }
+                name: { type: new GraphQLNonNull(GraphQLString) },
+                birthDate: { type: new GraphQLNonNull(GraphQLString) },
+                nationality: { type: new GraphQLNonNull(GraphQLString) },
+                biography: { type: new GraphQLNonNull(GraphQLString) },
+                website: { type: GraphQLString },
+                booksWritten: { type: new GraphQLNonNull(GraphQLString) },
+                awards: { type: GraphQLString }
             },
             resolve(parent, args, context) {
                 // Your logic to update an existing author in the database
