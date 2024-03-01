@@ -97,14 +97,14 @@ const RootQuery = new GraphQLObjectType({
             }
         },
         
-        // Query to get a book by name
-        bookByName: {
+        // Query to get a book by title
+        bookByTitle: {
             type: BookType,
             args: {
                 name: { type: GraphQLString }
             },
             resolve(parent, args, context) {
-                return context.db.collection('book').findOne({ name: args.name });
+                return context.db.collection('book').findOne({ title: args.title });
             }
         },
 
