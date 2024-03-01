@@ -20,19 +20,6 @@ app.get('/author/:id', (req, res) => {
   // Example: db.collection('author').findOne({ _id: objectId });
   res.send('author ID: ' + id);
 });
-
-app.get('/book/:id', (req, res) => {
-  const id = req.params.id;
-  const objectId = new ObjectId(id);
-  res.send('book ID: ' + id);
-});
-
-
-
-
-
-
-
 //End of ObjectId usage
 
 
@@ -47,10 +34,9 @@ app.use('/graphql', graphqlHTTP((req) => ({
 //End of GraphQL
 
 const authorRoutes = require('./routes/author');
-const bookRoutes = require('./routes/book');
 const { auth, requiresAuth } = require('express-openid-connect');
 
-
+//const bookRoutes = require('./routes/book');
 
 
 
@@ -87,7 +73,7 @@ app.use((req, res, next) => {
 
 app.use('/', require('./routes'));
 app.use('/author', authorRoutes);
-app.use('/book', bookRoutes);
+//app.use('/book', bookRoutes);
 
 
 process.on('uncaughtException', (err, origin) => {

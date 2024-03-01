@@ -74,8 +74,41 @@ const RootQuery = new GraphQLObjectType({
             resolve(parent, args, context) {
                 return context.db.collection('author').findOne({ name: args.name });
             }
-        }
-    }
+        },
+
+
+        // Query to get all books
+        books: {
+            type: new GraphQLList(BookType),
+            resolve(parent, args, context) {
+                // Logic to retrieve all books from MongoDB
+                return context.db.collection('book').find().toArray();
+            }
+        },
+            
+        // Query to get a book by ID
+        book: {
+            type:BookType,
+            args: {
+                id: { type: new GraphQLNonNull(GraphQLString) } 
+            },
+            resolve(parent, args, context) {
+                return context.db.collection('book').findOne({ _id: new ObjectId(args.id) }); // Use new ObjectId()
+            }
+        },
+        
+        // Query to get a book by name
+        bookByName: {
+            type: BookType,
+            args: {
+                name: { type: GraphQLString }
+            },
+            resolve(parent, args, context) {
+                return context.db.collection('book').findOne({ name: args.name });
+            }
+        },
+
+   }
 });
 
 // Define Mutations
@@ -125,10 +158,22 @@ const Mutation = new GraphQLObjectType({
             },
             resolve(parent, args, context) {
                 const book = new Book(args);
-                return context.db.collection('book').insertOne(book).then(result => result.ops[0]);
+                return context.db.collection('book').insertOne(book)
+                    .then(result => {
+                        // Check if the insertion was successful
+                        if (result && result.ops && result.ops.length > 0) {
+                            // Return the inserted book
+                            return result.ops[0];
+                        } else {
+                            throw new Error('A new Book has been Added');
+                        }
+                    })
+                    .catch(error => {
+                        throw new Error('Failed to add book');
+                    });
             }
         },
-
+        // Editing Author information from the collection
         updateAuthor: {
             type: AuthorType,
             args: {
@@ -156,7 +201,38 @@ const Mutation = new GraphQLObjectType({
                     throw new Error('Failed to update author');
                 });
             }
-        },        
+        },    
+        
+        //Editing Book information from the collection
+        updateBook: {
+            type: BookType,
+            args: {
+                _id: { type: new GraphQLNonNull(GraphQLString) },
+                title: { type: new GraphQLNonNull(GraphQLString) },
+                author: { type: new GraphQLNonNull(GraphQLString) },
+                genre: { type: new GraphQLNonNull(GraphQLString) },
+                publicationYear: { type: new GraphQLNonNull(GraphQLString) },
+                isbn: { type: new GraphQLNonNull(GraphQLString) },
+                copiesAvailable: { type: new GraphQLNonNull(GraphQLString) },
+                description: { type: new GraphQLNonNull(GraphQLString) }
+            },
+            resolve(parent, args, context) {
+                // Your logic to update an existing book in the database
+                // Use ObjectId for the id field
+                const { db } = context;
+                const { _id, ...updateFields } = args;
+                return db.collection('book').updateOne(
+                    { _id: new ObjectId(_id) },
+                    { $set: updateFields }
+                ).then(() => {
+                    // Return the updated book
+                    return db.collection('book').findOne({ _id: new ObjectId(_id) });
+                }).catch(err => {
+                    throw new Error('Failed to update book');
+                });
+            }
+        },    
+        // Delete Author from the Author database collection
         deleteAuthor: {
             type: AuthorType,
             args: {
@@ -170,7 +246,24 @@ const Mutation = new GraphQLObjectType({
                         throw new Error('Failed to delete author');
                     });
             }
-        }
+        },
+
+        // Delete book from the Book database collection
+        deleteBook: {
+            type: BookType,
+            args: {
+                _id: { type: new GraphQLNonNull(GraphQLString) }
+            },
+            resolve(parent, args, context) {
+                // Logic to delete a book from the database
+                return context.db.collection('book').findOneAndDelete({ _id: new ObjectId(args._id) })
+                    .then(result => result.value)
+                    .catch(err => {
+                        throw new Error('Failed to delete book');
+                    });
+            }
+        },
+
     }   
 });
 
