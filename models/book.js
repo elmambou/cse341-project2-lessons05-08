@@ -19,4 +19,23 @@ module.exports = (mongoose) => {
   
     return book;
   };
+
+  const mongoose = require('mongoose');
+
+  //Using Mongoose for Model Definition - GraphQL
+
+  const bookSchema = new mongoose.Schema({
+      title: String,
+      author: String,
+      genre: String,
+      publicationYear: String,
+      isbn: String,
+      copiesAvailable: String,
+      description: String
+  });
+
+const Book = mongoose.model('Book', bookSchema);
+
+module.exports = Book;
+
   
