@@ -147,11 +147,11 @@ const Mutation = new GraphQLObjectType({
                 const { db } = context;
                 const { _id, ...updateFields } = args;
                 return db.collection('author').updateOne(
-                    { _id: ObjectId(_id) },
+                    { _id: new ObjectId(_id) },
                     { $set: updateFields }
                 ).then(() => {
                     // Return the updated author
-                    return db.collection('author').findOne({ _id: ObjectId(_id) });
+                    return db.collection('author').findOne({ _id: new ObjectId(_id) });
                 }).catch(err => {
                     throw new Error('Failed to update author');
                 });
