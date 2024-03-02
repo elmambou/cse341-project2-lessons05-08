@@ -11,7 +11,7 @@ const Author = require('./models/author'); // Import Author model
 const Book = require('./models/book'); // Import Book model
 
 
-// Define Author type
+// Defining Author type
 const AuthorType = new GraphQLObjectType({
     name: 'Author',
     fields: () => ({
@@ -26,13 +26,13 @@ const AuthorType = new GraphQLObjectType({
     })
 });
 
-// Define Book type
+// Defining Book type
 const BookType = new GraphQLObjectType({
     name: 'Book',
     fields: () => ({
         _id: { type: GraphQLString },
         title: { type: GraphQLString },
-        author: { type: GraphQLString }, // Update to BookType
+        author: { type: GraphQLString }, 
         genre: { type: GraphQLString },
         publicationYear: { type: GraphQLString },
         isbn: { type: GraphQLString },
@@ -41,7 +41,7 @@ const BookType = new GraphQLObjectType({
     })
 });
 
-// Define Root Query
+// Defining Root Query
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
@@ -61,7 +61,7 @@ const RootQuery = new GraphQLObjectType({
                 id: { type: new GraphQLNonNull(GraphQLString) } 
             },
             resolve(parent, args, context) {
-                return context.db.collection('author').findOne({ _id: new ObjectId(args.id) }); // Use new ObjectId()
+                return context.db.collection('author').findOne({ _id: new ObjectId(args.id) }); 
             }
         },
 
@@ -93,7 +93,7 @@ const RootQuery = new GraphQLObjectType({
                 id: { type: new GraphQLNonNull(GraphQLString) } 
             },
             resolve(parent, args, context) {
-                return context.db.collection('book').findOne({ _id: new ObjectId(args.id) }); // Use new ObjectId()
+                return context.db.collection('book').findOne({ _id: new ObjectId(args.id) }); 
             }
         },
         
@@ -131,7 +131,7 @@ const Mutation = new GraphQLObjectType({
                 const author = new Author(args);
                 return context.db.collection('author').insertOne(author)
                     .then(result => {
-                        // Check if the insertion was successful
+                        // Checking if the insertion was successful
                         if (result && result.ops && result.ops.length > 0) {
                             // Return the inserted author
                             return result.ops[0];
@@ -187,7 +187,7 @@ const Mutation = new GraphQLObjectType({
                 awards: { type: GraphQLString }
             },
             resolve(parent, args, context) {
-                // Your logic to update an existing author in the database
+                // Logic to update an existing author in the database
                 // Use ObjectId for the id field
                 const { db } = context;
                 const { _id, ...updateFields } = args;
@@ -217,7 +217,7 @@ const Mutation = new GraphQLObjectType({
                 description: { type: new GraphQLNonNull(GraphQLString) }
             },
             resolve(parent, args, context) {
-                // Your logic to update an existing book in the database
+                // Logic to update an existing book in the database
                 // Use ObjectId for the id field
                 const { db } = context;
                 const { _id, ...updateFields } = args;

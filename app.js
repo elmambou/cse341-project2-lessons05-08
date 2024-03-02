@@ -4,7 +4,7 @@ const cors = require('cors');
 const mongodb = require('./db/connect');
 
 //graphQL
-const { graphqlHTTP } = require('express-graphql'); // Corrected import statement
+const { graphqlHTTP } = require('express-graphql'); 
 const { ObjectId } = require('mongodb'); //Import ObjectId
 const schema = require('./schema');
 
@@ -15,7 +15,7 @@ const app = express();
 app.get('/author/:id', (req, res) => {
   const id = req.params.id;
   const objectId = new ObjectId(id);
-  // Now you can use objectId to perform operations with MongoDB
+  // Now I can use objectId to perform operations with MongoDB
   // For example, querying a document by its ID
   // Example: db.collection('author').findOne({ _id: objectId });
   res.send('author ID: ' + id);
