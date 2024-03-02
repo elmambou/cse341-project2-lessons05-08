@@ -27,12 +27,6 @@ app.get('/book/:id', (req, res) => {
   res.send('book ID: ' + id);
 });
 
-
-
-
-
-
-
 //End of ObjectId usage
 
 
@@ -49,9 +43,6 @@ app.use('/graphql', graphqlHTTP((req) => ({
 const authorRoutes = require('./routes/author');
 const bookRoutes = require('./routes/book');
 const { auth, requiresAuth } = require('express-openid-connect');
-
-
-
 
 
 //const authorizeRoutes = require('./routes/authorize');
