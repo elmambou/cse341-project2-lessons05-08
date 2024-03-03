@@ -1,0 +1,219 @@
+
+//RENDER DEPLOYMENT
+
+### Query to retrieve all authors from the author collection
+https://cse341-project2-lessons05-08.onrender.com/GraphQL?query=query%20%7B%0A%20%20authors%20%7B%0A%20%20%20%20%20%20_id%0A%20%20%20%20%20%20name%0A%20%20%20%20%20%20birthDate%0A%20%20%20%20%20%20nationality%0A%20%20%20%20%20%20biography%0A%20%20%20%20%20%20website%0A%20%20%20%20%20%20booksWritten%0A%20%20%20%20%20%20awards%0A%20%20%7D%0A%7D
+
+
+
+### Query to retrieve one author by name
+https://cse341-project2-lessons05-08.onrender.com/GraphQL?query=query%20%7B%0A%20%20authorByName(name%3A%20%22James%20Bond%22)%20%7B%0A%20%20%20%20_id%0A%20%20%20%20name%0A%20%20%20%20birthDate%0A%20%20%20%20nationality%0A%20%20%20%20biography%0A%20%20%20%20website%0A%20%20%20%20booksWritten%0A%20%20%20%20awards%0A%20%20%7D%0A%7D%0A
+
+### Query to retrieve one author by ID
+https://cse341-project2-lessons05-08.onrender.com/GraphQL?query=%7B%0A%20%20author(id%3A%20%2265c3e4b713d6a7c025894bd3%22)%20%7B%0A%20%20%20%20name%0A%20%20%20%20birthDate%0A%20%20%20%20nationality%0A%20%20%20%20biography%0A%20%20%20%20website%0A%20%20%20%20booksWritten%0A%20%20%20%20awards%0A%20%20%7D%0A%7D%0A
+
+### Mutation to add a new author to the collection
+https://cse341-project2-lessons05-08.onrender.com/GraphQL?query=mutation%20%7B%0A%20%20addAuthor(%0A%20%20%20%20name%3A%20%22Stephanie%20Mancu%22%2C%0A%20%20%20%20birthDate%3A%20%221989-02-02%22%2C%0A%20%20%20%20nationality%3A%20%22South%20African%22%2C%0A%20%20%20%20biography%3A%20%22any%22%2C%0A%20%20%20%20website%3A%20%22any%22%2C%0A%20%20%20%20booksWritten%3A%20%22any%22%2C%0A%20%20%
+
+
+
+# routes.Graphql
+
+
+# GraphQL query to retrieve all authors from the author collection.
+query GetAllAuthors {
+  authors {
+    _id
+    name
+    birthDate
+    nationality
+    biography
+    website
+    booksWritten
+    awards
+  }
+}
+
+# Query to Retrieve one author by “name.”
+query GetAuthorByName {
+  authorByName(name: "James Bond") {
+    _id
+    name
+    birthDate
+    nationality
+    biography
+    website
+    booksWritten
+    awards
+  }
+}
+
+# Query to Retrieve one author by “Id”
+query GetAuthorById {
+  author(id: "65c3e4b713d6a7c025894bd3") {
+    name
+    birthDate
+    nationality
+    biography
+    website
+    booksWritten
+    awards
+  }
+}
+
+# Query to Add a new author to the collection
+mutation AddNewAuthor {
+  addAuthor(
+    name: "Stephanie Mancu",
+    birthDate: "1989-02-02",
+    nationality: "South African",
+    biography: "any",
+    website: "any",
+    booksWritten: "any",
+    awards: "any"
+  ) {
+    name
+    birthDate
+    nationality
+    biography
+    website
+    booksWritten
+    awards
+  }
+}
+
+# Query to update an existing author
+mutation UpdateAuthor {
+  updateAuthor(
+    _id: "65e39668adcab8306401f891",
+    name: "Jean Baptiste",
+    birthDate: "1820-02-09",
+    nationality: "French",
+    biography: "Not Available",
+    website: "any",
+    booksWritten: "none",
+    awards: "none received"
+  ) {
+    _id
+    name
+    birthDate
+    nationality
+    biography
+    website
+    booksWritten
+    awards
+  }
+}
+
+# Query to delete an existing author
+mutation DeleteAuthor {
+  deleteAuthor(_id: "65e39668adcab8306401f891") {
+    _id
+    name
+    birthDate
+    nationality
+    biography
+    website
+    booksWritten
+    awards
+  }
+}
+
+
+
+#### BOOK COLLECTION
+
+# routes.Graphql
+# Query to retrieve all authors from the BOOK collection
+https://cse341-project2-lessons05-08.onrender.com/GraphQL?query=query%20%7B%0A%20%20books%20%7B%0A%20%20%20%20%09%09_id%0A%20%20%20%20%20%20%20%20title%0A%20%20%20%09%09%09author%0A%20%20%20%20%20%20%20%20genre%0A%20%20%20%20%20%20%20%20publicationYear%0A%20%20%20%20%20%20%20%20isbn%0A%20%20%20%20%20%20%20%20copiesAvailable%0A%20%20%20%20%20%20%20%20description%0A%20%20%20%20%20%20%0A%20%20%7D%0A%7D%0A
+
+
+# GraphQL query to retrieve all Books from the Book collection.
+query GetAllBooks {
+  books {
+    _id
+    title
+    author
+    genre
+    publicationYear
+    isbn
+    copiesAvailable
+    description
+  }
+}
+
+
+# Query to Retrieve one Book by “title”
+https://cse341-project2-lessons05-08.onrender.com/GraphQL?query=query%20%7B%0A%20%20bookByTitle(title%3A%20%22Pride%20and%20Prejudice%22)%20%7B%0A%20%20%20%09%09_id%0A%20%20%20%20%20%20%20%20title%0A%20%20%20%09%09%09author%0A%20%20%20%20%20%20%20%20genre%0A%20%20%20%20%20%20%20%20publicationYear%0A%20%20%20%20%20%20%20%20isbn%0A%20%20%20%20%20%20%20%20copiesAvailable%0A%20%20%20%20%20%20%20%20description%0A%20%20%7D%0A%7D%0A
+
+
+query GetBookByTitle {
+  bookByTitle(title: "Pride and Prejudice") {
+    _id
+    title
+    author
+    genre
+    publicationYear
+    isbn
+    copiesAvailable
+    description
+  }
+}
+
+# Query to Retrieve one Book by “Id”
+query GetBookById {
+  book(id: "65c3d9c913d6a7c025894bb0") {
+    _id
+    title
+    author
+    genre
+    publicationYear
+    isbn
+    copiesAvailable
+    description
+  }
+}
+
+# Query to Add a new Book to the collection
+mutation AddNewBook {
+  addBook(
+    title: "The Most Sought Foods in Africa",
+    author: "Elie Mambou",
+    genre: "Fiction",
+    publicationYear: "2021",
+    isbn: "9780684833398",
+    copiesAvailable: "22",
+    description: "Living basic skills"
+  ) {
+    title
+    author
+    genre
+    publicationYear
+    isbn
+    copiesAvailable
+    description
+  }
+}
+
+# GraphQL query to update an existing Book
+mutation UpdateBook {
+  updateBook(
+    _id: "65e2518061a5faa7b30a3cd0",
+    title: "How to Become Rich",
+    author: "James Crepin",
+    genre: "Fiction",
+    publicationYear: "1992",
+    isbn: "any",
+    copiesAvailable: "none",
+    description: "none received"
+  ) {
+    _id
+    title
+    author
+    genre
+    publicationYear
+    isbn
+    copiesAvailable
+    description
+  }
+}
