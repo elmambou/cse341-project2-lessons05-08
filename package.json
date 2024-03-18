@@ -11,10 +11,8 @@
     "lint:fix": "eslint --fix",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
     "swagger": "node ./swagger.js"
-    
   },
-
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/elmambou/cse341-project2-lessons05-08.git"
   },
@@ -55,4 +53,3 @@
     "swagger-autogen": "^2.23.7"
   }
 }
-
