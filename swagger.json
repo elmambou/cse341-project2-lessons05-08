@@ -39,7 +39,11 @@
     },
     "/author/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Authors"
+        ],
+        "summary": "Get all authors",
+        "description": "This will return all the authors in the database",
         "responses": {
           "200": {
             "description": "OK"
@@ -50,7 +54,11 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Author"
+        ],
+        "summary": "Create an Author",
+        "description": "Create an Author by providing all required information.",
         "parameters": [
           {
             "name": "body",
@@ -101,7 +109,11 @@
     },
     "/author/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Author"
+        ],
+        "summary": "Get author by parent Id",
+        "description": "This will return an author by Id",
         "parameters": [
           {
             "name": "id",
@@ -123,7 +135,11 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Author"
+        ],
+        "summary": "Update an Author by Id",
+        "description": "Update an existing author by providing all required information.",
         "parameters": [
           {
             "name": "id",
