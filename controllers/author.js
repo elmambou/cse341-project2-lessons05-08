@@ -6,7 +6,7 @@ const ObjectId = require('mongodb').ObjectId;
 //GET REQUESTS */
 // Get a list of all Individuals
 const getAll = async (req, res) => {
-    // #swagger.tags = ['Authors']
+    // #swagger.tags = ['Author']
     // #swagger.summary = 'Get all authors'
     // #swagger.description = 'This will return all the authors in the database'
     try {
@@ -22,7 +22,7 @@ const getAll = async (req, res) => {
 // Get a single Author by Id
 const getSingle = async (req, res) => {
         // #swagger.tags = ['Author']
-    // #swagger.summary = 'Get author by parent Id'
+    // #swagger.summary = 'Get author by Id'
     // #swagger.description = 'This will return an author by Id'
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json('Must use a valid author id to find an author.');
@@ -43,7 +43,7 @@ const getSingle = async (req, res) => {
 // Create an Author
 const createAuthor = async (req, res) => {
         // #swagger.tags = ['Author']
-    // #swagger.summary = 'Create an Author'
+    // #swagger.summary = 'Create a new Author'
     // #swagger.description = 'Create an Author by providing all required information.'
     try {
         const db = mongodb.getDb(); // Get the database object once
@@ -71,7 +71,7 @@ const createAuthor = async (req, res) => {
 /* PUT REQUESTS */
 // Update a single Author by id
 const updateAuthor = async (req, res) => {
-        // #swagger.tags = ['Author']
+    // #swagger.tags = ['Author']
     // #swagger.summary = 'Update an Author by Id'
     // #swagger.description = 'Update an existing author by providing all required information.'
 
@@ -102,6 +102,9 @@ const updateAuthor = async (req, res) => {
 };
 
 const deleteAuthor = async (req, res) => {
+    // #swagger.tags = ['Author']
+    // #swagger.summary = 'Delete an Author from the Collection'
+    // #swagger.description = 'Update an existing author by providing all required information.'
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json('Must use a valid author id to delete a author.');
       }

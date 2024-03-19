@@ -40,7 +40,7 @@
     "/author/": {
       "get": {
         "tags": [
-          "Authors"
+          "Author"
         ],
         "summary": "Get all authors",
         "description": "This will return all the authors in the database",
@@ -57,7 +57,7 @@
         "tags": [
           "Author"
         ],
-        "summary": "Create an Author",
+        "summary": "Create a new Author",
         "description": "Create an Author by providing all required information.",
         "parameters": [
           {
@@ -112,7 +112,7 @@
         "tags": [
           "Author"
         ],
-        "summary": "Get author by parent Id",
+        "summary": "Get author by Id",
         "description": "This will return an author by Id",
         "parameters": [
           {
@@ -197,7 +197,11 @@
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Author"
+        ],
+        "summary": "Delete an Author from the Collection",
+        "description": "Update an existing author by providing all required information.",
         "parameters": [
           {
             "name": "id",
