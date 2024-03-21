@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const authorRoutes = require('./author');
+const bookRoutes = require('./book');
+
 
 router.use('/', require('./swagger'));
 router.use('/author', authorRoutes);
 router.use('/book', require('./book'));
 
-module.exports = { authorRoutes };
+module.exports = { authorRoutes, bookRoutes };

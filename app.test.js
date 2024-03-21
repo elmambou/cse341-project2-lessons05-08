@@ -1,10 +1,10 @@
 require('dotenv').config(); // Load environment variables from .env file
 const { MongoClient } = require('mongodb');
-//const request = require('supertest');
 const express = require('express');
-const {authorRoutes} = require('./Routes'); // Import the author routes
+const { authorRoutes } = require('./routes/author'); // Import the author routes
+const { bookRoutes } = require('./routes/book'); // Import the book routes
 
-describe('Author Collection Tests', () => {
+describe('BOOKSTORE Collections Tests', () => {
     let connection;
     let db;
     let app;
@@ -19,11 +19,14 @@ describe('Author Collection Tests', () => {
         app = express();
         app.use(express.json());
         app.use('/author', authorRoutes); // Mount author routes
+        app.use('/book', bookRoutes); // Mount book routes
     });
 
     afterAll(async () => {
         await connection.close();
     });
+
+    // ---------------------TEST FOR AUTHOR-------------------------- 
 
     describe('insert', () => {
         it('should insert a document into the author collection', async () => {
@@ -40,48 +43,26 @@ describe('Author Collection Tests', () => {
             };
 
             await authors.insertOne(mockAuthor);
-
-     
         });
     });
 
-});
+    // ---------------------TEST FOR BOOK-------------------------- 
 
-// ---------------------TEST FOR BOOK-------------------------- 
-describe('insert', () => {
-  let connection;
-  let db;
+    describe('insert', () => {
+        it('should insert a document into the book collection', async () => {
+            const books = db.collection('book');
 
-  beforeAll(async () => {
-    connection = await MongoClient.connect(globalThis.__MONGO_URI__, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+            const mockBook = {
+                title: "1984",
+                author: "George Orwell",
+                genre: "Science Fiction",
+                publicationYear: "1949",
+                isbn: "9780451524935",
+                copiesAvailable: "3",
+                description: "A dystopian novel depicting a totalitarian regime."
+            };
+
+            await books.insertOne(mockBook);
+        });
     });
-    db = await connection.db(globalThis.__MONGO_DB_NAME__);
-  });
-
-  afterAll(async () => {
-    await connection.close();
-  });
-
-  it('should insert a doc into collection', async () => {
-    const Book = db.collection('book');
-
-    const mockBook = {
-        title: "1984",
-        author: "George Orwell",
-        genre: "Science Fiction",
-        publicationYear: "1949",
-        isbn: "9780451524935",
-        copiesAvailable: "3",
-        description: "A dystopian novel depicting a totalitarian regime."
-
-    };
-
-    await Book.insertOne(mockBook);  
-   });
 });
-
-// ---------------------TEST FOR AUTHOR-------------------------- 
-
-
