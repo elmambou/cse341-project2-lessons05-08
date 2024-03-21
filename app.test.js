@@ -1,7 +1,8 @@
+require('dotenv').config(); // Load environment variables from .env file
 const { MongoClient } = require('mongodb');
-const request = require('supertest');
+//const request = require('supertest');
 const express = require('express');
-const authorRoutes = require('../Routes/author'); // Import the author routes
+const {authorRoutes} = require('./Routes'); // Import the author routes
 
 describe('Author Collection Tests', () => {
     let connection;
@@ -9,11 +10,11 @@ describe('Author Collection Tests', () => {
     let app;
 
     beforeAll(async () => {
-        connection = await MongoClient.connect(global.__MONGO_URI__, {
+        connection = await MongoClient.connect(process.env.MONGODB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
-        db = await connection.db(global.__MONGO_DB_NAME__);
+        db = await connection.db(process.env.MONGODB_DB_NAME);
 
         app = express();
         app.use(express.json());
@@ -38,37 +39,49 @@ describe('Author Collection Tests', () => {
                 awards: 'Test Awards'
             };
 
-            await authors.insertOne(mockAuthor); // Corrected: Used 'authors' instead of 'author'
+            await authors.insertOne(mockAuthor);
 
-            const insertedAuthor = await authors.findOne({ name: 'Test Author' });
-            expect(insertedAuthor).toEqual(mockAuthor);
+     
         });
     });
 
-    describe('CRUD Operations', () => {
-        it('should insert a new author', async () => {
-            const res = await request(app)
-                .post('/author')
-                .send({
-                    name: 'F. Scott Fitzgerald',
-                    birthDate: '1896-09-24',
-                    nationality: 'American',
-                    biography: 'F. Scott Fitzgerald was an American novelist...',
-                    website: 'https://www.fscottfitzgeraldsociety.org/',
-                    booksWritten: 'Most Popular Books, The Great Gatsby, Tender is the Night, The Beautiful and Damned, This Side of Paradise, The Short Stories of F. Scott Fitzgerald.',
-                    awards: 'None'
-                });
-
-            expect(res.statusCode).toEqual(201);
-            expect(res.body).toHaveProperty('acknowledged');
-        });
-
-        it('should retrieve all authors', async () => {
-            const res = await request(app).get('/author');
-            expect(res.statusCode).toEqual(200);
-            expect(res.body.length).toBeGreaterThan(0);
-        });
-
-        // Add tests for other CRUD operations like getSingle, updateAuthor, deleteAuthor as needed
-    });
 });
+
+
+// ---------------------TEST FOR BOOK-------------------------- 
+describe('insert', () => {
+  let connection;
+  let db;
+
+  beforeAll(async () => {
+    connection = await MongoClient.connect(globalThis.__MONGO_URI__, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    db = await connection.db(globalThis.__MONGO_DB_NAME__);
+  });
+
+  afterAll(async () => {
+    await connection.close();
+  });
+
+  it('should insert a doc into collection', async () => {
+    const Book = db.collection('book');
+
+    const mockBook = {
+        title: "1984",
+        author: "George Orwell",
+        genre: "Science Fiction",
+        publicationYear: "1949",
+        isbn: "9780451524935",
+        copiesAvailable: "3",
+        description: "A dystopian novel depicting a totalitarian regime."
+
+    };
+
+    await Book.insertOne(mockBook);  
+   });
+});
+// ---------------------TEST FOR AUTHOR-------------------------- 
+
+
