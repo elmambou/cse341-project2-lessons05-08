@@ -54,8 +54,8 @@ const bookController = require('../controllers/book');
 
 router.get('/', bookController.getAll);
 router.get('/:id', bookController.getSingle);
-router.post('/', checkLogin, saveBook, bookController.createAuthor); // Use middleware functions as route handlers
-router.put('/:id', checkLogin, saveBook, bookController.updateAuthor); // Use middleware functions as route handlers
-router.delete('/:id', checkLogin, saveBook, bookController.deleteAuthor);
+router.post('/', checkLogin, saveBook, bookController.createBook); // Use middleware functions as route handlers
+router.put('/:id', checkLogin, saveBook, bookController.updateBook); // Use middleware functions as route handlers
+router.delete('/:id', checkLogin, saveBook, bookController.deleteBook);
 
 module.exports = router;
