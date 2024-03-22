@@ -1,12 +1,11 @@
+// Application endpoints index
+
 const express = require('express');
 const router = express.Router();
 
-const authorRoutes = require('./author');
-const bookRoutes = require('./book');
-
-
 router.use('/', require('./swagger'));
-router.use('/author', authorRoutes);
+router.use('/author', require('./author'));
 router.use('/book', require('./book'));
 
-module.exports = { authorRoutes, bookRoutes };
+
+module.exports = router;
