@@ -1,9 +1,10 @@
 const {MongoClient} = require('mongodb');
+let connection;
+let db;
 
 // ---------------------TEST FOR BOOK-------------------------- 
 describe('insert', () => {
-  let connection;
-  let db;
+ 
 
   beforeAll(async () => {
     connection = await MongoClient.connect(globalThis.__MONGO_URI__, {
@@ -34,3 +35,24 @@ describe('insert', () => {
     await Book.insertOne(mockBook);  
    });
 });
+
+// ---------------------TEST FOR AUTHOR-------------------------- 
+describe('insert', () => {
+  
+  it('should insert a document into the author collection', async () => {
+      const authors = db.collection('author');
+
+      const mockAuthor = {
+          name: 'Test Author',
+          birthDate: '1900-01-01',
+          nationality: 'Test Nationality',
+          biography: 'Test Biography',
+          website: 'http://example.com',
+          booksWritten: 'Test Books',
+          awards: 'Test Awards'
+      };
+
+      await authors.insertOne(mockAuthor);
+  });
+});
+
